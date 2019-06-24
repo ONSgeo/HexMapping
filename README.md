@@ -127,14 +127,11 @@ For some hierarchical geographies (e.g. Local Authorities within regions within 
 
 But this will result in the CxC of each regional hexmap drawing the individual hexes inwards, and this will cause gaps to open up between regions.  The datasets should then be merged into a single shapefile, and the gaps can then be manually reduced by shifting the hexes of one region towards the other, respecting the common hexagonal mesh.
         
-<img src="MD_images/1.png" width="100%" align="center">
-<img src="MD_images/3.png" width="100%" align="center">
-<img src="MD_images/4.png" width="100%" align="center">
+<img src="MD_images/1.png" width="25%" align="center"> <img src="MD_images/3.png" width="25%" align="center"> <img src="MD_images/4.png" width="25%" align="center">
 
 If excessive space between the individual hexagons on a compressed hexmap disturbs, this may be reduced by applying one or more additional round(s) of compression. 
 
-<img src="MD_images/5.png" width="100%" align="center">
-<img src="MD_images/6.ng" width="100%" align="center">
+<img src="MD_images/5.png" width="25%" align="center"> <img src="MD_images/6.png" width="25%" align="center">
 
 
 ### Other scales
