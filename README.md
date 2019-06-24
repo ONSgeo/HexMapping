@@ -47,7 +47,7 @@ As your input geography is imported, its projection is noted: it is then turned 
 
 Speed of execution depends upon your PC’s resources and the complexity of the input spatial dataset: for over ¾ of tested geographies, the compressed hexmap is created within ten seconds. Only three took more than one minute – the 1,973 Cantons of France (138s); the 1,385 NUTS3 units of the WEU and EFTA (150 s) and the 7,201 MSOAs of England and Wales (40 minutes).
  
-### USING THE TOOL [see report for details]
+### USING THE TOOL [see [the report](https://github.com/ONS-Geography-Research/HexMapping/blob/master/Report/Hexmapping_2019_06_24_0910.pdf) for details]
 
 #### A. PREREQUISITES
 
