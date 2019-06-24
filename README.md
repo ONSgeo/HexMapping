@@ -9,17 +9,11 @@
 If so, then this is definitely for you. 
 
 Our Python tool creates equal area cartograms (EACs) based on hexagonal grids. Its principal purpose is to get around the visual dominance of large areas on maps, and the tendency for smaller areas to be overlooked. Please refer to  
-[the report](https://github.com/huggingface/pytorch-pretrained-BERT) = enabled weblinkfor the nature of the problem. The ONS approach has been successfully tested on a wide range of geographies with an extreme range of scales. 
+[the report](https://github.com/ONS-Geography-Research/HexMapping/blob/master/Report/Hexmapping_2019_06_24_0910.pdf) for details on the the nature of the problem and how to set up and run the tool on your data to run on any PC running 64-bit Windows 7 or 10.  
 
-We explain how to set up the script and your data to run on any PC running 64-bit Windows 7 or 10.  
+The ONS approach has been successfully tested on a wide range of geographies with an extreme range of scales. 
 
-We then go through some examples to demonstrate how the methodology works. 
-
-We are separately developing an R-based method for automating the production of square-based (waffle chart) EACs.
-
-
-
-
+Please note: we are separately developing an R-based method for automating the production of square-based (waffle chart) EACs.
 
 ## Acknowledgements
 
