@@ -9,7 +9,8 @@
 ### SCRIPT AUTHORS: Code core written by George Tzelepis (Γιωργος Τζελέπης). 
 ### ... restructuring, additional code and annotations by Bruce Mitchell. 
 
-### ONS Geography Branch, June 2019
+
+### ONS Geospatial, June 2019
 -------------------------------
 ###
 
