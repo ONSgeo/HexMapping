@@ -22,7 +22,7 @@ The eye is drawn to large areas, so when seen together on a map, the larger unit
  Here's our logo (hover to see the title text):
 
 Inline-style: 
-![alt text](https://github.com/ONS-Geography-Research/HexMapping/blob/md_images/1.png "Logo Title Text 1")
+![alt text](https://github.com/ONS-Geography-Research/HexMapping/blob/master/MD_images/Districts_of_Russia.png "Districts of Russia")
 
 Reference-style: 
 ![alt text][logo]
