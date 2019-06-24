@@ -46,7 +46,6 @@ txtString  =  grey box emphasis - extra line above and below
 [txtLink](https://github.com/huggingface/pytorch-pretrained-BERT) = enabled weblink
 ```
 
-
 ```python
 # comment
 script
