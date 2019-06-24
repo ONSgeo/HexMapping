@@ -124,41 +124,38 @@ Zooming right in, we have generated a compressed hexmap from an electron microsc
 Looking further afield, the technique may also be used at the cosmic scale. The HYG Database is a meta-catalogue containing over 120,000 stars. It includes the x,y,z, Cartesian coordinates of the star (in a system based on the equatorial coordinates as seen from Earth), distance from earth and a range of other fields. Once a suitable buffer is generated for each point to create polygons, a compressed hexmap may easily be generated for any subset of the catalogue. We have generated a compressed hexmap of all the stars within ten parsecs of Sol (our sun).   
 
  
-## Summary
+## SUMMARY
 
 We have created a tool that can be used to quickly and efficiently create hex-based equal area cartograms from any dataset that includes cartesian or projected coordinates, regardless of the scale. It is most suitable for datasets where the area of polygons, or the distances between points, is highly variable. 
 
 The tool can create BASIC or COMPRESSED hexmap from ESRI shapefile *polygon* input. A point dataset must first be converted to polygon by generation of buffers.
 
-Your polygon input dataset must be placed in the INPUT_POLYGON folder, whose location is defined in script ‘HexTool__Setup.py’. It must also be added to ‘HexTool__Geographies.py’ as GEOGRAPHY_NAME. You also have to select values for HEXSIZE, HEXORIENTATION and COMPRESSION_FACTOR.  Note that a value is required for COMPRESSION_FACTOR even if you are creating a basic hexmap. Use ‘3’ as the default. 
-
-Geometry and image files will be generated and placed in the output folders specified.
-
-Play with the HEXSIZE, HEXORIENTATION and COMPRESSION_FACTOR parameters until you are satisfied. 
+Your polygon input dataset must be placed in the INPUT_POLYGON folder, whose location is defined in script ‘HexTool__Setup.py’. It must also be added to ‘HexTool__Geographies.py’ as GEOGRAPHY_NAME. You also have to select values for HEXSIZE, HEXORIENTATION and COMPRESSION_FACTOR.  Note that a value is required for COMPRESSION_FACTOR even if you are creating a basic hexmap. Use ‘3’ as the default.  Geometry and image files will be generated and placed in the output folders specified.
 
 Note: if you use a decimal for the COMPRESSION_FACTOR, e.g.2.5, while the folder for the output will be named correctly (e.g. ID_KABUPATEN__EPSG_4326_WGS84_0.6_1_CF2.5_hexmap), the name of the shapefile within it will be curtailed to the decimal (e.g. ID_KABUPATEN__EPSG_4326_WGS84_0.6_1_CF2). If you try several options (e.g. CH+ 2.8, 2.6, 2.4) they will all be in separate, correctly named folders, but will have identical filenames. 
 
+## RECOMMENDED TESTING
 
-Recommended testing:
-
-First: try out some of the geographies supplied with this tool with the parameters as set up in the Python script ‘HexTool__Geographies_UK.py’ or ‘HexTool__Geographies_Elsewhere.py’. 
+Users are invited to try out some of the geographies supplied with this tool with the parameters as set up in the Python script ‘HexTool__Geographies_UK.py’ or ‘HexTool__Geographies_Elsewhere.py’, respectively. 
 
 Then see what happens when you alter HEXSIZE, HEXORIENTATION and COMPRESSION_FACTOR.
 
 Add some of your own data (as ESRI shapefile) to the INPUT_POLYGON_PATH and to the appropriate ‘HexTool__Geographies_....py’  folder. Experiment with the three parameters.
 
+## FUTURE OPTIMISATIONS 
 
-DESIRABLE OPTIMISATIONS 
+Currently, the optimal values for HEXSIZE, HEXORIENTATION and COMPRESSION_FACTOR must all be obtained by trial and error. It should be possible to calculate optimal values by reference to the perimeter envelope of the input geography, the number of spatial entities within it and the units of the spatial reference system (projection). 
 
-•	Currently, the optimal values for hex size, hex orientation and the compression factor must all be obtained by trial and error. It should be possible to calculate optimal values by reference to the perimeter envelope of the input geography, the number of spatial entities within it and the units of the spatial reference system (projection). 
-•	The transformation function could be refined with the inclusion of a friction function to supplement the existing gravity function. There is something similar in D3.js
-•	The tool should be able to accept as input any spatial file format rinsed by Fiona, but ity’s currently set up only to accept ESRI shapefiles as input and to write output also to shapefile. Adding other formats at both ends (e.g. geopackage, geoJSON) – should be fairly straightforward. 
+The transformation function could be refined with the inclusion of a friction function to supplement the existing gravity function. There is something similar in D3.js
 
-•	The basic and compressed code began as a single script, remain essentially the same and should really be merged back into each other, incorporating a conditional IF COMPRESSED HEXMAP – ACTIVATE COMPRESSION CODE – ELSE SKIP clause. Otherwise there's double the maintenance.  A 'compressed' switch should be added to the parameters. 
-•	Some of the linear code ought to be rewritten as functions
-•	Perhaps a completion bar / hourglass / sound on completion could be added?
-•	Under some circumstances, multithreading would help.
+The tool should be able to accept as input any spatial file format recognised by Fiona, but it’s currently set up only to accept ESRI shapefiles as input and to write output also only to shapefile. Adding other formats at both ends (e.g. geopackage, geoJSON) – has been experimented with buit not implemented.
 
+The BASIC and COMPRESSED code began as a single script but were separated. They remain essentially the same and should really be merged back into each other, incorporating a conditional IF COMPRESSED HEXMAP – ACTIVATE COMPRESSION CODE – ELSE SKIP clause.  Otherwise there's double the maintenance.  A 'compressed' switch could be added to the parameters. 
 
+Some of the linear code ought to be rewritten as functions
 
- 
+Under some circumstances, multithreading might help.
+
+As a cosmetic touch , perhaps a completion bar / hourglass / sound on completion could be added?
+
+Any assisttance towards achievement of these goals would be greatly appreciated.
