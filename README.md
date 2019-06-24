@@ -7,7 +7,7 @@
 ### PROJECT CONCEPTION: Bruce Mitchell, January 2017
 ### METHODOLOGY: Bruce Mitchell, George Tzelepis 
 ### SCRIPT AUTHORS: Code core written by George Tzelepis (Γιωργος Τζελέπης). 
-### ................Restructuring, additional code and annotations by Bruce Mitchell. 
+### ... restructuring, additional code and annotations by Bruce Mitchell. 
 
 ### ONS Geography Branch, June 2019
 -------------------------------
