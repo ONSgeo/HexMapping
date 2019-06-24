@@ -13,5 +13,6 @@ normal text
 ## centre
 <p align="center">
   <img src="Capture.JPG" width="40%">
+  This is a picture
 </p>
-This is a picture
+
