@@ -15,17 +15,17 @@ The ONS approach has been successfully tested on a wide range of geographies wit
 
 Please note: we are separately developing an R-based method for automating the production of square-based (waffle chart) EACs.
 
-## Acknowledgements
-
-I conceived both projects in 2016-2017 and worked out the hexmap methodology with George Tzelepis. George wrote the original code in ArcPy for ESRI's ArcGIS. He subsequently ported the product over to Python, but development was then critically delayed by IT issues within ONS. George left ONS and ceased active development in May 2018. Since then, a way has been found around the IT issues and this has allowed me to test and further develop the code. 
-So, in the first rank, I must thank George Tzelepis for doing the heavy lifting of working out how to convert my original ideas into code – not once, but twice – and working out the geometry. Further thanks are due to Andy Harfoot of Geodata Institute (University of Southampton) has also assisted with the crystallising some of the ideas and correcting some of the code. I’d also like to thank ONS Geography managers Andy Tait, Nick O’Rourke, Chris Gale and Alistair Calder for their support and patience over the project’s long gestation.
-
 ## Introduction
+
 Thematic mapping draws attention to statistical difference across space. Statistical values of interest are often attached to sub-areas of the overall geography, and this may reveal significant spatial variations. However, administrative divisions commonly encompass a range of unit sizes, from small urban districts to large rural expanses. 
 
 ## The tyranny of large areas
 
 When seen together on a map, larger units tend to dominate and the smaller to recede. The eye is drawn to large areas. Those familiar with the geostatistics behind any given map may be able to apply a mental filter to compensate, but the fact remains that the areas where the chief interest of your story resides may be small and hard to see. Think of Canada, Australia and Russia, where huge areas, often relatively sparse in socio-economic statistics, acquire visual dominance at the expense of the smaller and often more populated areas.
+
+<img align = "left" src="Districts of Russia.png" width="50%">
+
+
 
 Here in the UK it is a similar story. Local Authority Districts (LADs) in the UK range in size from the 290 hectares of the City of London to the 2.6 million hectares of the Highlands of Scotland – but the two are administratively equivalent.  On a national map, the City of London is completely invisible. 
 
