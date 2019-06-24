@@ -18,16 +18,8 @@ The tool has been successfully tested on a wide range of geographies with an ext
 Thematic mapping draws attention to statistical difference across space. Statistical values of interest are often attached to sub-areas of the overall geography, and this may reveal significant spatial variations. However, administrative divisions commonly encompass a range of unit sizes, from small urban districts to large rural expanses. 
 
 The eye is drawn to large areas, so when seen together on a map, the larger units dominate and the smaller recede. Think of Canada, Australia and Russia, where huge areas, often relatively sparse in socio-economic statistics, acquire visual dominance at the expense of the smaller and often more populated areas. Those familiar with the geostatistics behind any given map may be able to apply a mental filter to compensate, but the fact remains that the areas where the chief interest of your story resides may be small and hard to see. 
- 
- Here's our logo (hover to see the title text):
 
-Inline-style: 
-![alt text](https://github.com/ONS-Geography-Research/HexMapping/blob/master/MD_images/Districts of Russia.png "Districts_of_Russia")
-
-Reference-style: 
-![alt text][logo]
-
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
+[alt text](https://github.com/ONS-Geography-Research/HexMapping/blob/master/MD_images/Districts of Russia.png "Districts_of_Russia")
 
 Here in the UK it is a similar story. Local Authority Districts (LADs) in the UK range in size from the 290 hectares of the City of London to the 2.6 million hectares of the Highlands of Scotland – but the two are administratively equivalent. On a national map, the City of London is completely invisible.  British statistical geographies (Census output areas) are just as vulnerable to the issue as the administrative geographies.  They are based on population thresholds, so are made up of units (instances) which are small where the population is dense, and large where it is spread thinly.  At the middle level [MSOA (EW), DataZones (Sc) and Small Areas (NI)], they range from just over 1 hectare (ha) to 180,000 ha.
 
