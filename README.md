@@ -115,12 +115,12 @@ With a COMPRESSION FACTOR of CF=3 the large gaps are reduced while clearly retai
 
 Where clusters of spatial units could cause unreasonable distortions of the overall pattern, these can be extracted to inset maps alongside the general map. Unlike the earlier example, areas not selected for inset mapping are not disadvantaged. Furthermore, generating individual hexmaps for the inset areas results in a better approximation to their actual shape than can be achieved by creating a single overall hexmap. Both basic and compressed hexmap variants (with the inset areas extracted) can more accurately display the areas around the periphery of the inset areas (see around London).
 
-<img src="MD_images/Local Authorities by area with insets.png" width="100%" align="center">
+<img src="MD_images/Local Authorities by area with insets.png" width="60%" align="center">
 
 The West Midlands region encompasses some to of the most rural and some of the most urban parts of England, giving rise to a 700-fold size difference between smallest and largest of the 735 MSOAs in the region. It is therefore not practicable to produce an MSOA-level choropleth, graduated or proportional symbol, or basic hexmap of the entire region (scale 1:820,000). On the other hand, a compressed hexmap can succeed, as the compression pemits zoomed-in view, equasting to a scale of 1:525,000.
 
-<img src="MD_images/West_Midlands_MSOAs_1.png" width="100%" align="center">
-<img src="MD_images/West_Midlands_MSOAs_4_property_prices.png" width="100%" align="center">
+<img src="MD_images/West_Midlands_MSOAs_1.png" width="80%" align="center">
+<img src="MD_images/West_Midlands_MSOAs_4_property_prices.png" width="80%" align="center">
 
 ### Regional and multiple compression
 
@@ -143,19 +143,19 @@ The methodology may have applicability well beyond the scales normally used for 
 
 Our first example is a set of marine biology sample points in a small part of Plymouth harbour, used with the approval of Dr Benjamin Ciotti of the University of Plymouth's School of Biological and Marine Sciences.  The x-y location of each sampled point was recorded along with depth and data on the various species found there. Given the clustering and dispersal of the sampling points, employing proportional symbols in their actual locations would be inefficient, with both large gaps and overlaps. The sampling data may be communicated more effectively with a compressed hexmap. 
 
-<img src="MD_images/Ciotti.png" width="100%" align="center">
+<img src="MD_images/Ciotti.png" width="80%" align="center">
 
 #### Microscopic
 
 Zooming right in, we have generated a compressed hexmap from an electron microscope image of the brain of a fly.  In the absence of spatial data on the image (covering 4mm2), and purely as a proof of concept, I converted the image file to vectors and applied a simple Cartesian coordinate system. I then created and mapped a simple (and meaningless) 8-value categorical scale.  
 
-<img src="MD_images/FlyBrainSliceData_II.png" width="100%" align="center">
+<img src="MD_images/FlyBrainSliceData_II.png" width="80%" align="center">
 
 #### Cosmic
 
 Looking further afield, the technique may also be used at the cosmic scale. The HYG Database is a meta-catalogue containing over 120,000 stars. It includes the x,y,z, Cartesian coordinates of the star (in a system based on the equatorial coordinates as seen from Earth), distance from earth and a range of other fields. Once a suitable buffer is generated for each point to create polygons, a compressed hexmap may easily be generated for any subset of the catalogue. We have generated a compressed hexmap of all the stars within ten parsecs of Sol (our sun).   
 
-<img src="MD_images/The HYG database of stars.png" width="100%" align="center">
+<img src="MD_images/The HYG database of stars.png" width=80%" align="center">
 
 ## SUMMARY
 
