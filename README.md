@@ -11,4 +11,5 @@ normal text
 
 * bullet point
 
-![picutre](https://github.com/ONS-Geography-Research/HexMapping/blob/master/Capture.JPG)
+
+<img src="Capture.JPG" width="200" align="right">
