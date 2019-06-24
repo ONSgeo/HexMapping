@@ -28,3 +28,28 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 * bullet point
 * bullet point
 * bullet point
+
+#  = HEADING 1 with underline
+
+## = HEADING 2 with underline
+
+- = BULLET
+
+- **txtString** = BOLD BULLET
+
+`txtString` =  grey box emphasis
+
+``` sh
+txtString  =  grey box emphasis - extra line above and below
+
+```
+[txtLink](https://github.com/huggingface/pytorch-pretrained-BERT) = enabled weblink
+```
+
+
+```python
+# comment
+script
+```
+
+
