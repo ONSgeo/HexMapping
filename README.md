@@ -1,6 +1,20 @@
 #  AUTOMATED GENERATION OF EQUAL AREA CARTOGRAMS (‘HEXMAPS’) AT ANY SCALE
 
+
+###
+-------------------------------
+### ONS Hexmap Automation Tool
+### PROJECT CONCEPTION: Bruce Mitchell, January 2017
+### METHODOLOGY: Bruce Mitchell, George Tzelepis 
+### SCRIPT AUTHORS: Code core written by George Tzelepis (Γιωργος Τζελέπης). 
+### Restructuring, additional code and annotations by Bruce Mitchell. 
+
+### ONS Geography Branch, June 2019
+-------------------------------
+###
+
 ## DO YOU NEED TO MAP DATA?
+
 
 -	Does your geography comprise polygon sub-units of widely differing sizes?
 -	Are the most interesting data to be found in the smaller areas?
