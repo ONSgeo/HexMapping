@@ -80,15 +80,21 @@ Speed of execution depends upon your PC’s resources and the complexity of the 
 
 How the compression works can perhaps most effectively be shown on the example of districts in the Russian Federation. This is on account of its very skewed composition = there are 85 districts of which the smallest (Sevastopol) is 616 sq.km. The largest (Sakha (Yakutia)) covers over 3 million sq.km., while 30 districts are over 100,000 km sq. km. in area, and these are all in the north or east.  In addition, Kaliningrad and Sevastopol + the Crimea (not internationally recognized) are detached from mainland Russia.
 
-As we have already seen, a choropleth map of this geography will be dominated by the large Siberian areas, while the small areas will be all but invisible. However, much socio-economic data is likely to be concentrated in the smaller areas. A hexmap will equalise the visual impact of each district but, without compression, will leave large gaps due to the enormous distances involved.
-
 <img src="MD_images/Russia_oblasts_190km_no_compression.png" width="100%" align="center">
+
+As we have already seen, a choropleth map of this geography will be dominated by the large Siberian areas, while the small areas will be all but invisible. However, much socio-economic data is likely to be concentrated in the smaller areas. A hexmap will equalise the visual impact of each district but, without compression, will leave large gaps due to the enormous distances involved.
 
 On the basic hexmap, each hexagon is rooted to the geometric centroid of its district. The geographical distribution is faithfully represented and the hexmap accurately overlays on a basemap. But in the case of Russian districts, the hex size that best achieves this (each hex being 190,000 km top to bottom [they’re pointy-uppy]) means that there’s an enormous amount of empty space, and this results in small hexagons whose labels are hard to read. It would also be hard to interpret any thematic data that was pinned to them (by colour). So, this is a geography for which a compressed hex map would make perfect sense.
 
+<img src="MD_images/Russia_oblasts_190km_with_compression__1.png" width="100%" align="center">
+
 We drop the basemap but, for the moment, retain the boundaries for reference. Six peripheral districts are labelled - these will have furthest to travel towards the centroid of centroids (CxC).  
 
+<img src="MD_images/Russia_oblasts_190km_with_compression__6.png" width="100%" align="center">
+
 As the Compression Factor is adjusted (remember that CF=1,000 is practically no compression, while 1 is extreme compression), the gravitational attraction of the CxC varies. At CF = 3.0, the pattern remains recognisably that of the districts of the Russian Federation –  we still have the concentration of districts in western Russia, Kaliningrad Oblast is still separated, the Crimea and Caucasus are distinct, as is the scatter eastwards across the Urals into Asia. Yet now, we can zoom to the hexmap layer – so making the hexagons larger and their labelling clearer. 
+
+<img src="MD_images/Russia_oblasts_190km_with_compression__7.png" width="100%" align="center">
 
 ### Complex archipelagos
 
@@ -96,15 +102,24 @@ The program also works with highly complex and regionally differentiated geograp
 
 Here, 270 Kabupaten or ‘regencies’ are distributed across a huge number of islands. There is considerable variation in size, generally being large on the islands of Borneo and New Guinea, but tiny on the densely inhabited island of Java. This is a classic example of the shortcomings of choropleth mapping. In terms of mapping socio-economic data at this administrative level, Java will always be disadvantaged. 
 
-Producing a simple hexmap will leave large spaces, especially in the less-densely populated Borneo and New Guinea. 
+<img src="MD_images/Indonesia_kabupaten_bdys_population.png" width="100%" align="center">
 
-An uncompressed hexmap (HEXSIZE = 0.6 decimal degrees) will result in the concentration of regencies on Java expanding well beyond the island’s coast, while great spaces exist between the hexes representing the extensive regencies on Borneo and New Guinea. As with Russia, the HEXSIZE required to accommodate this diverse geography means that effective labelling is very challenging. 
+Producing a simple hexmap will leave large spaces, especially in the less-densely populated Borneo and New Guinea. An uncompressed hexmap (HEXSIZE = 0.6 decimal degrees) will result in the concentration of regencies on Java expanding well beyond the island’s coast, while great spaces exist between the hexes representing the extensive regencies on Borneo and New Guinea. As with Russia, the HEXSIZE required to accommodate this diverse geography means that effective labelling is very challenging. 
+
+<img src="MD_images/Indonesia_kabupaten_bdys_and_hexmap_population.png" width="100%" align="center">
 
 With a COMPRESSION FACTOR of CF=3 the large gaps are reduced while clearly retaining the overall pattern. One can then zoom into the map and label it far more effectively. 
 
+<img src="MD_images/Indonesia_kabupaten_bdys_population_hexmap.png" width="100%" align="center">
+
 Where clusters of spatial units could cause unreasonable distortions of the overall pattern, these can be extracted to inset maps alongside the general map. Unlike the earlier example, areas not selected for inset mapping are not disadvantaged. Furthermore, generating individual hexmaps for the inset areas results in a better approximation to their actual shape than can be achieved by creating a single overall hexmap. Both basic and compressed hexmap variants (with the inset areas extracted) can more accurately display the areas around the periphery of the inset areas (see around London).
 
+<img src="MD_images/Local Authorities by area with insets.png" width="100%" align="center">
+
 The West Midlands region encompasses some to of the most rural and some of the most urban parts of England, giving rise to a 700-fold size difference between smallest and largest of the 735 MSOAs in the region. It is therefore not practicable to produce an MSOA-level choropleth, graduated or proportional symbol, or basic hexmap of the entire region (scale 1:820,000). On the other hand, a compressed hexmap can succeed, as the compression pemits zoomed-in view, equasting to a scale of 1:525,000.
+
+<img src="MD_images/West_Midlands_MSOAs_1.png" width="100%" align="center">
+<img src="MD_images/West_Midlands_MSOAs_4_property_prices.png" width="100%" align="center">
 
 ### Regional and multiple compression
 
@@ -112,7 +127,15 @@ For some hierarchical geographies (e.g. Local Authorities within regions within 
 
 But this will result in the CxC of each regional hexmap drawing the individual hexes inwards, and this will cause gaps to open up between regions.  The datasets should then be merged into a single shapefile, and the gaps can then be manually reduced by shifting the hexes of one region towards the other, respecting the common hexagonal mesh.
         
+<img src="MD_images/1.png" width="100%" align="center">
+<img src="MD_images/3.png" width="100%" align="center">
+<img src="MD_images/4.png" width="100%" align="center">
+
 If excessive space between the individual hexagons on a compressed hexmap disturbs, this may be reduced by applying one or more additional round(s) of compression. 
+
+<img src="MD_images/5.png" width="100%" align="center">
+<img src="MD_images/6.ng" width="100%" align="center">
+
 
 ### Other scales
 
@@ -122,15 +145,20 @@ The methodology may have applicability well beyond the scales normally used for 
 
 Our first example is a set of marine biology sample points in a small part of Plymouth harbour, used with the approval of Dr Benjamin Ciotti of the University of Plymouth's School of Biological and Marine Sciences.  The x-y location of each sampled point was recorded along with depth and data on the various species found there. Given the clustering and dispersal of the sampling points, employing proportional symbols in their actual locations would be inefficient, with both large gaps and overlaps. The sampling data may be communicated more effectively with a compressed hexmap. 
 
+<img src="MD_images/Ciotti.png" width="100%" align="center">
+
 #### Microscopic
 
 Zooming right in, we have generated a compressed hexmap from an electron microscope image of the brain of a fly.  In the absence of spatial data on the image (covering 4mm2), and purely as a proof of concept, I converted the image file to vectors and applied a simple Cartesian coordinate system. I then created and mapped a simple (and meaningless) 8-value categorical scale.  
+
+<img src="MD_images/FlyBrainSliceData_II.png" width="100%" align="center">
 
 #### Cosmic
 
 Looking further afield, the technique may also be used at the cosmic scale. The HYG Database is a meta-catalogue containing over 120,000 stars. It includes the x,y,z, Cartesian coordinates of the star (in a system based on the equatorial coordinates as seen from Earth), distance from earth and a range of other fields. Once a suitable buffer is generated for each point to create polygons, a compressed hexmap may easily be generated for any subset of the catalogue. We have generated a compressed hexmap of all the stars within ten parsecs of Sol (our sun).   
 
- 
+<img src="MD_images/The_HYG_database_of_stars.png" width="100%" align="center">
+
 ## SUMMARY
 
 We have created a tool that can be used to quickly and efficiently create hex-based equal area cartograms from any dataset that includes cartesian or projected coordinates, regardless of the scale. It is most suitable for datasets where the area of polygons, or the distances between points, is highly variable. 
