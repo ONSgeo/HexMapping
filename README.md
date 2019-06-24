@@ -1,6 +1,6 @@
 #  AUTOMATED GENERATION OF EQUAL AREA CARTOGRAMS (‘HEXMAPS’) AT ANY SCALE
 
-# Do you need to map data?
+## DO YOU NEED TO MAP DATA?
 
 -	Does your geography comprise polygon sub-units of widely differing sizes?
 -	Are the most interesting data to be found in the smaller areas?
@@ -37,7 +37,7 @@ Our favoured approach is the equal area cartogram (EAC). Here, every district is
 
 Once generated, the EAC provides a single standard layout that can be linked to countless datasets to generate as many thematic maps as desired. 
 
-## The ONS hexmapping tool
+### The ONS hexmapping tool
 
 Within this project, we have concentrated upon the automatic generation of hexmaps using Python. Our code runs quickly and can operate on any polygon dataset and at any scale.  
 
@@ -47,31 +47,31 @@ As your input geography is imported, its projection is noted: it is then turned 
 
 Speed of execution depends upon your PC’s resources and the complexity of the input spatial dataset: for over ¾ of tested geographies, the compressed hexmap is created within ten seconds. Only three took more than one minute – the 1,973 Cantons of France (138s); the 1,385 NUTS3 units of the WEU and EFTA (150 s) and the 7,201 MSOAs of England and Wales (40 minutes).
  
-## USING THE TOOL [see report for details]
+### USING THE TOOL [see report for details]
 
-### A. PREREQUISITES
+#### A. PREREQUISITES
 
-### B.	SETUP
-#### B1. SETUP FILES
+#### B.	SETUP
+##### B1. SETUP FILES
 	HexTool__Setup.py
 	HexTool__Geographies_UK.py  or HexTool__Geographies_Elsewhere.py
-### B2. CORE CODE
+##### B2. CORE CODE
 	HexTool__Basic.py
-### B3. CORE CODE WITH COMPRESSION
+##### B3. CORE CODE WITH COMPRESSION
 	HexTool__Compressed.py
-### B4. SETUP PROCEDURE
+##### B4. SETUP PROCEDURE
 	PATHS AND FOLDERS
 	GEOGRAPHY
 	HEXMAP TYPE 
 	GRAVITY FUNCTION CORRECTION (F_CORRECTION)
 	OUTPUT FILE TYPE
-### B5. FOR A BASIC HEXMAP
+##### B5. FOR A BASIC HEXMAP
 	INPUT POLYGON and PARAMETERS
-### B6. FOR A COMPRESSED HEXMAP
+##### B6. FOR A COMPRESSED HEXMAP
 	INPUT POLYGON and PARAMETERS
 
 
-## The Compression Algorithm
+### The Compression Algorithm
 
 How the compression works can perhaps most effectively be shown on the example of districts in the Russian Federation. This is on account of its very skewed composition = there are 85 districts of which the smallest (Sevastopol) is 616 sq.km. The largest (Sakha (Yakutia)) covers over 3 million sq.km., while 30 districts are over 100,000 km sq. km. in area, and these are all in the north or east.  In addition, Kaliningrad and Sevastopol + the Crimea (not internationally recognized) are detached from mainland Russia.
 
@@ -83,7 +83,7 @@ We drop the basemap but, for the moment, retain the boundaries for reference. Si
 
 As the Compression Factor is adjusted (remember that CF=1,000 is practically no compression, while 1 is extreme compression), the gravitational attraction of the CxC varies. At CF = 3.0, the pattern remains recognisably that of the districts of the Russian Federation –  we still have the concentration of districts in western Russia, Kaliningrad Oblast is still separated, the Crimea and Caucasus are distinct, as is the scatter eastwards across the Urals into Asia. Yet now, we can zoom to the hexmap layer – so making the hexagons larger and their labelling clearer. 
 
-## Complex archipelagos
+### Complex archipelagos
 
 The program also works with highly complex and regionally differentiated geographies such as Indonesia. 
 
@@ -99,7 +99,7 @@ Where clusters of spatial units could cause unreasonable distortions of the over
 
 The West Midlands region encompasses some to of the most rural and some of the most urban parts of England, giving rise to a 700-fold size difference between smallest and largest of the 735 MSOAs in the region. It is therefore not practicable to produce an MSOA-level choropleth, graduated or proportional symbol, or basic hexmap of the entire region (scale 1:820,000). On the other hand, a compressed hexmap can succeed, as the compression pemits zoomed-in view, equasting to a scale of 1:525,000.
 
-## Regional and multiple compression
+### Regional and multiple compression
 
 For some hierarchical geographies (e.g. Local Authorities within regions within countries) with distinct spatial patterns, and where it may be important to retain these, it may be desirable to initially generate regional hexmaps before combining these into a hexmap for the whole geography. Projection, HEXSIZE and other parameters must be common across all regions. 
 
@@ -107,19 +107,19 @@ But this will result in the CxC of each regional hexmap drawing the individual h
         
 If excessive space between the individual hexagons on a compressed hexmap disturbs, this may be reduced by applying one or more additional round(s) of compression. 
 
-## Other scales
+### Other scales
 
-### Local
+#### Local
 
 The methodology may have applicability well beyond the scales normally used for cartography, and well beyond social geostatistics. Whether the application of this techniques to data at these scales, and which are inherently three-dimensional, is helpful or even appropriate, must be left to the relevant subject experts.
 
 Our first example is a set of marine biology sample points in a small part of Plymouth harbour, used with the approval of Dr Benjamin Ciotti of the University of Plymouth's School of Biological and Marine Sciences.  The x-y location of each sampled point was recorded along with depth and data on the various species found there. Given the clustering and dispersal of the sampling points, employing proportional symbols in their actual locations would be inefficient, with both large gaps and overlaps. The sampling data may be communicated more effectively with a compressed hexmap. 
 
-### Microscopic
+#### Microscopic
 
 Zooming right in, we have generated a compressed hexmap from an electron microscope image of the brain of a fly.  In the absence of spatial data on the image (covering 4mm2), and purely as a proof of concept, I converted the image file to vectors and applied a simple Cartesian coordinate system. I then created and mapped a simple (and meaningless) 8-value categorical scale.  
 
-### Cosmic
+#### Cosmic
 
 Looking further afield, the technique may also be used at the cosmic scale. The HYG Database is a meta-catalogue containing over 120,000 stars. It includes the x,y,z, Cartesian coordinates of the star (in a system based on the equatorial coordinates as seen from Earth), distance from earth and a range of other fields. Once a suitable buffer is generated for each point to create polygons, a compressed hexmap may easily be generated for any subset of the catalogue. We have generated a compressed hexmap of all the stars within ten parsecs of Sol (our sun).   
 
