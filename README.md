@@ -18,14 +18,10 @@ The tool has been successfully tested on a wide range of geographies with an ext
 Thematic mapping draws attention to statistical difference across space. Statistical values of interest are often attached to sub-areas of the overall geography, and this may reveal significant spatial variations. However, administrative divisions commonly encompass a range of unit sizes, from small urban districts to large rural expanses. 
 
 The eye is drawn to large areas, so when seen together on a map, the larger units dominate and the smaller recede. Think of Canada, Australia and Russia, where huge areas, often relatively sparse in socio-economic statistics, acquire visual dominance at the expense of the smaller and often more populated areas. Those familiar with the geostatistics behind any given map may be able to apply a mental filter to compensate, but the fact remains that the areas where the chief interest of your story resides may be small and hard to see. 
-
-## Header Size 2
-	
  
 Here in the UK it is a similar story. Local Authority Districts (LADs) in the UK range in size from the 290 hectares of the City of London to the 2.6 million hectares of the Highlands of Scotland – but the two are administratively equivalent. On a national map, the City of London is completely invisible.  British statistical geographies (Census output areas) are just as vulnerable to the issue as the administrative geographies.  They are based on population thresholds, so are made up of units (instances) which are small where the population is dense, and large where it is spread thinly.  At the middle level [MSOA (EW), DataZones (Sc) and Small Areas (NI)], they range from just over 1 hectare (ha) to 180,000 ha.
 
 One is usually encouraged to use rate data for choropleths instead (e.g. percentage of one species of tree in the forest) as that were the perfect solution. But the tyranny of large areas persists regardless of your data type – a larger forest is more visible. 
-
 
 ## Cartograms
 
@@ -37,45 +33,41 @@ Cartograms exist in many forms; they may preserve, or ignore, shape, contiguity 
 
 ## The Equal Area Cartogram 
 
-Our favoured approach is the equal area cartogram (EAC). Here, every district is represented with an identical geometric object of equal size and shape, and therefore, area. No area is inherently (dis)advantaged, as the base geometric representation of all is the same.  Once generated, the EAC provides a single standard layout that can be linked to countless datasets to generate as many thematic maps as desired. 
+Our favoured approach is the equal area cartogram (EAC). Here, every district is represented with an identical geometric object of equal size and shape, and therefore, area. No area is inherently (dis)advantaged, as the base geometric representation of all is the same.  
+
+Once generated, the EAC provides a single standard layout that can be linked to countless datasets to generate as many thematic maps as desired. 
 
 ## The ONS hexmapping tool
 
-Within this project, we have concentrated upon automatic hexmap generation using Python. Our code runs quickly and can operate on any polygon dataset at any scale.  
+Within this project, we have concentrated upon the automatic generation of hexmaps using Python. Our code runs quickly and can operate on any polygon dataset and at any scale.  
+
 We have tested the product on a wide range of distinctive and challenging geographies. These include countries with predominantly north-south extent (Chile, Italy, Norway), countries with east-west extent (Russia, USA), irregular shapes (Croatia), exclaves (Russia’s Kaliningrad), doughnuts (Germany - Berlin within Brandenburg), complex archipelagos (Indonesia). It works on all, regardless of projection or scale. Indeed, it works equally well on all the stars within ten parsecs of Sol (our sun) and a tiny detail from an electron microscope image of the brain of a fly.
-As your input geography is imported, its projection is noted: it is then turned into pure geometry for the hexmap creation and then re-exported back to its original projection. Two hexmap variants are available. The basic variant overlays the original input geography and the two may be used together. The compressed hexmap is designed to stand alone, without the original geography or a base map. However, because it is in the same projection as the original input geography and the basic hexmap, you may overlay them for testing purposes, to assess the effectiveness of the compression.
+
+As your input geography is imported, its projection is noted: it is then turned into pure geometry for the hexmap creation and then re-exported back to its original projection. Two hexmap variants are available. The BASIC variant overlays the original input geography and the two may be used together. The COMPRESSEED hexmap is designed to stand alone, without the original geography or a base map. However, because it is in the same projection as the original input geography and the basic hexmap, they may be overlain for testing purposes, to assess the effectiveness of the compression.
 
 Speed of execution depends upon your PC’s resources and the complexity of the input spatial dataset: for over ¾ of tested geographies, the compressed hexmap is created within ten seconds. Only three took more than one minute – the 1,973 Cantons of France (138s); the 1,385 NUTS3 units of the WEU and EFTA (150 s) and the 7,201 MSOAs of England and Wales (40 minutes).
  
-### Using the tool
+## USING THE TOOL [see report for details]
 
 ### A. PREREQUISITES
+
 ### B.	SETUP
-
 #### B1. SETUP FILES
-HexTool__Setup.py
-HexTool__Geographies_UK.py  or HexTool__Geographies_Elsewhere.py
-#### B2. CORE CODE
-HexTool__Basic.py
-#### B3. CORE CODE WITH COMPRESSION
+	HexTool__Setup.py
+	HexTool__Geographies_UK.py  or HexTool__Geographies_Elsewhere.py
+### B2. CORE CODE
+	HexTool__Basic.py
+### B3. CORE CODE WITH COMPRESSION
 	HexTool__Compressed.py
-#### B4. SETUP PROCEDURE
-PATHS AND FOLDERS
-GEOGRAPHY
-HEXMAP TYPE 
-GRAVITY FUNCTION CORRECTION (F_CORRECTION)
-OUTPUT FILE TYPE
-B5. SETUP PROCEDURE – FOR A BASIC HEXMAP
-
-INPUT POLYGON and PARAMETERS
-B6. SETUP PROCEDURE – FOR A COMPRESSED HEXMAP
-
-Within script “HexTool__Geographies_UK.py”  or “HexTool__Geographies_Elsewhere.py”
-
-INPUT POLYGON and PARAMETERS
-COMPRESSION_FACTOR
-
-RETURN TO AND RUN script “HexTool__Setup.py”
+### B4. SETUP PROCEDURE
+	PATHS AND FOLDERS
+	GEOGRAPHY
+	HEXMAP TYPE 
+	GRAVITY FUNCTION CORRECTION (F_CORRECTION)
+	OUTPUT FILE TYPE
+### B5. FOR A BASIC HEXMAP
+	INPUT POLYGON and PARAMETERS
+### B6. FOR A COMPRESSED HEXMAP
 
 
 Examples
