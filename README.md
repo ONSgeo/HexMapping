@@ -111,9 +111,9 @@ If excessive space between the individual hexagons on a compressed hexmap distur
 
 ### Local
 
-The methodology may have applicability well beyond the scales normally used for cartography, and well beyond social geostatistics. Whether the application of this techniques to data at these scales, and which are inherently three-dimensional, is helpful or even appropriate, must be left to the relevant subject experts. We offer it as a proof of concept.  
+The methodology may have applicability well beyond the scales normally used for cartography, and well beyond social geostatistics. Whether the application of this techniques to data at these scales, and which are inherently three-dimensional, is helpful or even appropriate, must be left to the relevant subject experts.
 
-Our first example is a set of marine biology sample points in a small part of Plymouth harbour, used with permission of Dr Benjamin Ciotti of the University of Plymouth’s School of Marine Biology.  The x-y location of each sampled point was recorded along with depth and data on the various species found there. Given the clustering and dispersal of the sampling points, employing proportional symbols in their actual locations would be inefficient, with both large gaps and overlaps. The sampling data may be communicated more effectively with a compressed hexmap. 
+Our first example is a set of marine biology sample points in a small part of Plymouth harbour, used with the approval of Dr Benjamin Ciotti of the University of Plymouth's School of Biological and Marine Sciences.  The x-y location of each sampled point was recorded along with depth and data on the various species found there. Given the clustering and dispersal of the sampling points, employing proportional symbols in their actual locations would be inefficient, with both large gaps and overlaps. The sampling data may be communicated more effectively with a compressed hexmap. 
 
 ### Microscopic
 
@@ -162,82 +162,3 @@ DESIRABLE OPTIMISATIONS
 
 
  
-ERRORS
-
-
-ATTRIBUTEERROR: 'FLOAT' OBJECT HAS NO ATTRIBUTE '__GEO_INTERFACE__'
- 
-CAUSE: GEOGRAPHY_NAME has an unknown projection, or HEXSIZE too small. 
-Solutions: choose and apply appropriate projection for the geography, change HEXSIZE
-
-
-
-DRIVERERROR: PATH/FILENAME.SHP:  NO SUCH FILE OR DIRECTORY. 
-
-CAUSE: typos. Can also occur if you use multiple Python interpreters on the scripts
-Solutions: check you typing. Stick with oneinterpreter!
-
- 
-VALUEERROR: THE SECOND INPUT GEOMETRY IS EMPTY
-
-CAUSE: The HEXSIZE value is not appropriate for the combination of geography extent and geometry unit. Example: global decimal degree extent -180 to + 180 but HEXSIZE = 60000
-Solutions: change HEXSIZE to appropriate scale. Check the axes on the INPUT_POLYGON.png to see the min/max x and y. HEXSIZE should be something like the min/max RANGE divided by the number of map units.
-
-
-VALUEERROR: THE TRUTH VALUE OF AN ARRAY WITH MORE THAN ONE ELEMENT IS 
-AMBIGUOUS. USE A.ANY() OR A.ALL()
-
-CAUSE:  failing to delete variables at the end of the scripts.
-
-
-'MAXIMUM ALLOWED SIZE EXCEEDED'
-
-CAUSE: COMPRESSION_FACTOR = 0. Must be at least 1. Min 1.5 recommended.
-
-
-ATTRIBUTEERROR: MODULE 'HEXTOOL__SETUP' HAS NO ATTRIBUTE 'INPUT_POLYGON_PATH'
-
-This error paired with occasional double-running of the script. It’s to do with:
-import HexTool__core_coreOnly.py and import HexTool__core_withTransform.py.
-These scripts both ‘import HexTool__Setup as parameters’ and 
-INPUT_POLYGON_PATH = parameters.INPUT_POLYGON_PATH
-OUTPUT_IMAGE_PATH = parameters.OUTPUT_IMAGE_PATH
-OUTPUT_HEXMAP_PATH = parameters.OUTPUT_HEXMAP_PATH
-OUTPUT_FILE_TYPE = parameters.OUTPUT_FILE_TYPE
-… but both are run from HexTool__Setup.py
-
-
-
-## Header Size 2
-
-  <img align = "left" src="Capture.JPG" width="25%">
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-
-* bullet point
-* bullet point
-* bullet point
-
-#  = HEADING 1 with underline
-
-## = HEADING 2 with underline
-
-- = BULLET
-
-- **txtString** = BOLD BULLET
-
-`txtString` =  grey box emphasis
-
-``` sh
-txtString  =  grey box emphasis - extra line above and below
-
-```
-[txtLink](https://github.com/huggingface/pytorch-pretrained-BERT) = enabled weblink
-```
-
-```python
-# comment
-script
-```
-
-
