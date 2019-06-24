@@ -10,7 +10,8 @@ normal text
 
 
 * bullet point
-
+## left
+some tesxt
 ## centre
 <p align="center">
   <img src="Capture.JPG" width="40%">
