@@ -12,4 +12,4 @@ normal text
 * bullet point
 
 
-<img src="Capture.JPG" width="500" align="middle">
+<img src="Capture.JPG" width="500" align="right">
