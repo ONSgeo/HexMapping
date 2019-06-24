@@ -1,9 +1,10 @@
-# -	Do you need to display data on a map?
--	Is the geography you need to map made up of sub-units of widely differing sizes?
--	Are the most interesting data to be found in the smaller areas?
--	Alternatively, are your data located at point that are by turns tightly concentrated and widely scattered? 
+# Do you need to map data?
 
-If the above apply, then this is definitely for you. 
+	Does your geography comprise polygon sub-units of widely differing sizes?
+	Are the most interesting data to be found in the smaller areas?
+	Alternatively, are your data located at points that are by turns tightly concentrated and widely scattered? 
+
+If so, then this is definitely for you. 
 
 Our Python tool creates equal area cartograms (EACs) based on hexagonal grids. its principal purpose is to get around the visual dominance of large areas on maps, and the tendency for smaller areas to be overlooked. Please refer to the report for the nature of the problem. The ONS approach has been successfully tested on a wide range of geographies with an extreme range of scales. 
 
