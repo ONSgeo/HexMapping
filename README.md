@@ -12,6 +12,7 @@ normal text
 * bullet point
 ## left
 <img align="left" src="Capture.JPG" width="40%">
+
 some text\gfdgdfg
 
 ## centre
