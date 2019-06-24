@@ -13,7 +13,9 @@ normal text
 
 
 <img src="Capture.JPG" width="20%" align="left">
+
 <p align="center">
   <img src="Capture.JPG" width="20%">
 </p>
+
 <img src="Capture.JPG" width="20%" align="right">
