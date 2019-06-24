@@ -1,3 +1,5 @@
+#  AUTOMATED GENERATION OF EQUAL AREA CARTOGRAMS (‘HEXMAPS’) AT ANY SCALE
+
 # Do you need to map data?
 
 -	Does your geography comprise polygon sub-units of widely differing sizes?
@@ -6,7 +8,8 @@
 
 If so, then this is definitely for you. 
 
-Our Python tool creates equal area cartograms (EACs) based on hexagonal grids. its principal purpose is to get around the visual dominance of large areas on maps, and the tendency for smaller areas to be overlooked. Please refer to the report for the nature of the problem. The ONS approach has been successfully tested on a wide range of geographies with an extreme range of scales. 
+Our Python tool creates equal area cartograms (EACs) based on hexagonal grids. Its principal purpose is to get around the visual dominance of large areas on maps, and the tendency for smaller areas to be overlooked. Please refer to  
+[the report](https://github.com/huggingface/pytorch-pretrained-BERT) = enabled weblinkfor the nature of the problem. The ONS approach has been successfully tested on a wide range of geographies with an extreme range of scales. 
 
 We explain how to set up the script and your data to run on any PC running 64-bit Windows 7 or 10.  
 
@@ -14,14 +17,16 @@ We then go through some examples to demonstrate how the methodology works.
 
 We are separately developing an R-based method for automating the production of square-based (waffle chart) EACs.
 
-#  Automated generation of Equal Area Cartograms (‘hexmaps’) at any scale
+
+
 
 
 ## Acknowledgements
 
 I conceived both projects in 2016-2017 and worked out the hexmap methodology with George Tzelepis. George wrote the original code in ArcPy for ESRI's ArcGIS. He subsequently ported the product over to Python, but development was then critically delayed by IT issues within ONS. George left ONS and ceased active development in May 2018. Since then, a way has been found around the IT issues and this has allowed me to test and further develop the code. 
-So, in the first rank, I must thank George Tzelepis for doing the heavy lifting of working out how to convert my original ideas into code – not once, but twice – and working out the geometry. Further thanks are due to Andy Harfoot of Geodata Institute (University of Southampton) has also assisted with the crystallising some of the ideas and correcting some of the code. I’d also like to thank ONS Geography managers Andy Tait, Nick O’Rourke, Chris Gale and Alistair Calder for their support and patience over the project’s long gestation
-Introduction
+So, in the first rank, I must thank George Tzelepis for doing the heavy lifting of working out how to convert my original ideas into code – not once, but twice – and working out the geometry. Further thanks are due to Andy Harfoot of Geodata Institute (University of Southampton) has also assisted with the crystallising some of the ideas and correcting some of the code. I’d also like to thank ONS Geography managers Andy Tait, Nick O’Rourke, Chris Gale and Alistair Calder for their support and patience over the project’s long gestation.
+
+## Introduction
 Thematic mapping draws attention to statistical difference across space. Statistical values of interest are often attached to sub-areas of the overall geography, and this may reveal significant spatial variations. However, administrative divisions commonly encompass a range of unit sizes, from small urban districts to large rural expanses. 
 
 ## The tyranny of large areas
