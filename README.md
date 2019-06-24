@@ -3,7 +3,7 @@
 
 ###
 -------------------------------
-### ONS Hexmap Automation Tool
+### ONS HEXMAP AUTOMATION TOOL 
 ### PROJECT CONCEPTION: Bruce Mitchell, January 2017
 ### METHODOLOGY: Bruce Mitchell, George Tzelepis 
 ### SCRIPT AUTHORS: Code core written by George Tzelepis (Γιωργος Τζελέπης). 
