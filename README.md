@@ -10,12 +10,8 @@ normal text
 
 
 * bullet point
-## left
-<img align="left" src="Capture.JPG" width="40%">
-
-some text\gfdgdfg
-
 ## centre
 <p align="center">
   <img src="Capture.JPG" width="40%">
 </p>
+This is a picture
