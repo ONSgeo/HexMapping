@@ -137,6 +137,7 @@ The West Midlands region encompasses some to of the most rural and some of the m
 
 <p align = "center">
 <img src="MD_images/West_Midlands_MSOAs_1.png" width="80%" align="center">
+	
 <img src="MD_images/West_Midlands_MSOAs_4_property_prices.png" width="80%" align="center">
 </p>
 
