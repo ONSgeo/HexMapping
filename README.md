@@ -148,7 +148,7 @@ Where clusters of spatial units could cause unreasonable distortions of the over
 <img src="MD_images/Local Authorities by area with insets.png" width="60%" align="center">
 </p>
 
-The West Midlands region encompasses some to of the most rural and some of the most urban parts of England, giving rise to a 700-fold size difference between smallest and largest of the 735 MSOAs in the region. It is therefore not practicable to produce an MSOA-level choropleth, graduated or proportional symbol, or basic hexmap of the entire region (scale 1:820,000). On the other hand, a compressed hexmap can succeed, as the compression pemits zoomed-in view, equasting to a scale of 1:525,000.
+The West Midlands region encompasses some to of the most rural and some of the most urban parts of England, giving rise to a 700-fold size difference between smallest and largest of the 735 MSOAs in the region. It is therefore not practicable to produce an MSOA-level choropleth, graduated or proportional symbol, or basic hexmap of the entire region (scale 1:820,000). On the other hand, a compressed hexmap can succeed, as the compression pemits zoomed-in view, equating to a scale of 1:525,000.
 
 <p align = "center">
 <img src="MD_images/West_Midlands_MSOAs_1.png" width="80%" align="center">
