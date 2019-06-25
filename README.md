@@ -24,7 +24,7 @@
 If so, then this is definitely for you. 
 
 Our Python tool creates equal area cartograms (EACs) based on hexagonal grids. Its principal purpose is to get around the visual dominance of large areas on maps, and the tendency for smaller areas to be overlooked. Please refer to 
-[the report](https://github.com/ONS-Geography-Research/HexMapping/blob/master/Report/Hexmapping_2019_06_24_0910.pdf) for details on the the nature of the problem and setting up and running the tool on your data (64-bit Windows 7 or 10 supported).  
+[the report](https://github.com/ONS-Geography-Research/HexMapping/blob/master/Report/Hexmapping_2019_06_24_0910.pdf) for details on the nature of the problem and setting up and running the tool on your data (64-bit Windows 7 or 10 supported).  
 
 The tool has been successfully tested on a wide range of geographies with an extreme range of scales. 
 
@@ -50,7 +50,7 @@ Yet it is possible to set aside the visual dominance of large areas altogether.
 
 One can scale the territories not according to their actual geographic area, but according to a value of statistical interest. This is known as a cartogram – a hybrid statistical graph / map, a compromise by which the viewer gains more immediate access to the data but loses some of the geographical context.  
 
-Cartograms exist in many forms; they may preserve, or ignore, shape, contiguity and orientation. They are often shown together with a conventional map to aid navigation and interpretation. They can powerfully convey general impressions (see Benjamin Henning’s ‘WorldMapper’  ), but it’s hard to derive specific values, and next to impossible to assess whether differently shaped areas represent the same statistical value. Also, a new cartogram must be drawn for each new variable, refreshing the navigational challenge every time.
+Cartograms exist in many forms; they may preserve, or ignore, shape, contiguity and orientation. They are often shown together with a conventional map to aid navigation and interpretation. They can powerfully convey general impressions (see Benjamin Henning’s ‘WorldMapper’), but it’s hard to derive specific values, and next to impossible to assess whether differently shaped areas represent the same statistical value. Also, a new cartogram must be drawn for each new variable, refreshing the navigational challenge every time.
 
 ## The Equal Area Cartogram 
 
@@ -148,7 +148,7 @@ Where clusters of spatial units could cause unreasonable distortions of the over
 <img src="MD_images/Local Authorities by area with insets.png" width="60%" align="center">
 </p>
 
-The West Midlands region encompasses some to of the most rural and some of the most urban parts of England, giving rise to a 700-fold size difference between smallest and largest of the 735 MSOAs in the region. It is therefore not practicable to produce an MSOA-level choropleth, graduated or proportional symbol, or basic hexmap of the entire region (scale 1:820,000). On the other hand, a compressed hexmap can succeed, as the compression pemits zoomed-in view, equating to a scale of 1:525,000.
+The West Midlands region encompasses some to of the most rural and some of the most urban parts of England, giving rise to a 700-fold size difference between smallest and largest of the 735 MSOAs in the region. It is therefore not practicable to produce an MSOA-level choropleth, graduated or proportional symbol, or basic hexmap of the entire region (scale 1:820,000). On the other hand, a compressed hexmap can succeed, as the compression permits zoomed-in view, equating to a scale of 1:525,000.
 
 <p align = "center">
 <img src="MD_images/West_Midlands_MSOAs_1.png" width="80%" align="center">
@@ -224,7 +224,7 @@ Currently, the optimal values for HEXSIZE, HEXORIENTATION and COMPRESSION_FACTOR
 
 The transformation function could be refined with the inclusion of a friction function to supplement the existing gravity function. There is something similar in D3.js
 
-The tool should be able to accept as input any spatial file format recognised by Fiona, but it’s currently set up only to accept ESRI shapefiles as input and to write output also only to shapefile. Adding other formats at both ends (e.g. geopackage, geoJSON) – has been experimented with buit not implemented.
+The tool should be able to accept as input any spatial file format recognised by Fiona, but it’s currently set up only to accept ESRI shapefiles as input and to write output also only to shapefile. Adding other formats at both ends (e.g. geopackage, geoJSON) – has been experimented with but not implemented.
 
 The BASIC and COMPRESSED code began as a single script but were separated. They remain essentially the same and should really be merged back into each other, incorporating a conditional IF COMPRESSED HEXMAP – ACTIVATE COMPRESSION CODE – ELSE SKIP clause.  Otherwise there's double the maintenance.  A 'compressed' switch could be added to the parameters. 
 
@@ -232,6 +232,6 @@ Some of the linear code ought to be rewritten as functions
 
 Under some circumstances, multithreading might help.
 
-As a cosmetic touch , perhaps a completion bar / hourglass / sound on completion could be added?
+As a cosmetic touch, perhaps a completion bar / hourglass / sound on completion could be added?
 
-Any assisttance towards achievement of these goals would be greatly appreciated.
+Any assistance towards achievement of these goals would be greatly appreciated.
