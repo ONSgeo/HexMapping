@@ -50,7 +50,7 @@ Yet it is possible to set aside the visual dominance of large areas altogether.
 
 One can scale the territories not according to their actual geographic area, but according to a value of statistical interest. This is known as a cartogram – a hybrid statistical graph / map, a compromise by which the viewer gains more immediate access to the data but loses some of the geographical context.  
 
-Cartograms exist in many forms; they may preserve, or ignore, shape, contiguity and orientation. They are often shown together with a conventional map to aid navigation and interpretation. They can powerfully convey general impressions (see Benjamin Henning’s ‘WorldMapper’ https://worldmapper.org/), but it’s hard to derive specific values, and next to impossible to assess whether differently shaped areas represent the same statistical value. Also, a new cartogram must be drawn for each new variable, refreshing the navigational challenge every time.
+Cartograms exist in many forms; they may preserve, or ignore, shape, contiguity and orientation. They are often shown together with a conventional map to aid navigation and interpretation. They powerfully convey general impressions (see Benjamin Henning’s ‘WorldMapper’ https://worldmapper.org/), but are not intended to convey specific values, and it is next to impossible to assess whether the distorted areas - which are already differently-shaped in their raw forms -  represent the same statistical value. Also, a new cartogram must be drawn for each new variable, refreshing the navigational challenge every time.
 
 ## The Equal Area Cartogram 
 
