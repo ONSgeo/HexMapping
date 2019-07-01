@@ -26,7 +26,7 @@ import time
 import numpy
 import matplotlib.pyplot as pyplot
 import matplotlib.pylab as pylab
-
+import math
 #from scipy.spatial import voronoi_plot_2d as Voronoi
 from scipy.spatial import Voronoi
 import shapely.ops
@@ -37,6 +37,20 @@ import geopandas
 from geopandas import GeoDataFrame
 
 import HexTool__Setup as parameters
+
+#INPUT_POLYGON_PATH = parameters.INPUT_POLYGON_PATH
+#OUTPUT_IMAGE_PATH = parameters.OUTPUT_IMAGE_PATH
+#OUTPUT_HEXMAP_PATH = parameters.OUTPUT_HEXMAP_PATH
+#
+#GEOGRAPHY_NAME = parameters.GEOGRAPHY_NAME
+#HEXSIZE = parameters.HEXSIZE
+#HEXORIENTATION = parameters.HEXORIENTATION
+#COMPRESSION_FACTOR = parameters.COMPRESSION_FACTOR
+#
+#F_CORRECTION = parameters.F_CORRECTION
+#
+#OUTPUT_FILE_TYPE = parameters.OUTPUT_FILE_TYPE
+
 INPUT_POLYGON_PATH = parameters.INPUT_POLYGON_PATH
 OUTPUT_IMAGE_PATH = parameters.OUTPUT_IMAGE_PATH
 OUTPUT_HEXMAP_PATH = parameters.OUTPUT_HEXMAP_PATH
@@ -46,7 +60,6 @@ GEOGRAPHY_NAME = parameters.GEOGRAPHY_NAME
 HEXSIZE = parameters.HEXSIZE
 HEXORIENTATION = parameters.HEXORIENTATION
 COMPRESSION_FACTOR = parameters.COMPRESSION_FACTOR
-F_CORRECTION = parameters.F_CORRECTION
 
 
 ''' NAMING THE HEXMAP '''
@@ -64,53 +77,53 @@ print("\n")
 
 # test section
 
-print("base HEXSIZE = " + str(HEXSIZE))
-print("base COMPRESSION_FACTOR = " + str(COMPRESSION_FACTOR))
-print("base MODF_CORRECTION = " + str(F_CORRECTION))
-print("\n")
+#print("base HEXSIZE = " + str(HEXSIZE))
+#print("base COMPRESSION_FACTOR = " + str(COMPRESSION_FACTOR))
+#print("base MODF_CORRECTION = " + str(F_CORRECTION))
+#print("\n")
 
 # MODF
+##
+#import math
+#from math import modf
+#HEXSIZEdec, HEXSIZEint = math.modf(HEXSIZE)
+#COMPRESSION_FACTORdec, COMPRESSION_FACTORint = math.modf(COMPRESSION_FACTOR)
+#F_CORRECTIONdec, F_CORRECTIONint = math.modf(F_CORRECTION)
+##
 #
-import math
-from math import modf
-HEXSIZEdec, HEXSIZEint = math.modf(HEXSIZE)
-COMPRESSION_FACTORdec, COMPRESSION_FACTORint = math.modf(COMPRESSION_FACTOR)
-F_CORRECTIONdec, F_CORRECTIONint = math.modf(F_CORRECTION)
 #
-
-
-print("MODF HEXSIZEint = " + str(HEXSIZEint))
-print("MODF HEXSIZEdec = " + str(HEXSIZEdec))
-print("MODF COMPRESSION_FACTORint = " + str(COMPRESSION_FACTORint))
-print("MODF COMPRESSION_FACTORdec = " + str(COMPRESSION_FACTORdec))
-print("MODF_CORRECTIONint = " + str(F_CORRECTIONint))
-print("MODF_CORRECTIONdec = " + str(F_CORRECTIONdec))
-print("\n")
-
-
-# DIVMOD
-
-divmodHEXSIZEdec = divmod(HEXSIZEdec,1)
-divmodCOMPRESSION_FACTORdec = divmod(COMPRESSION_FACTORdec,1)
-divmodF_CORRECTIONdec = divmod(F_CORRECTIONdec,1)
-
-print("divmodHEXSIZEdec = " + str(divmodHEXSIZEdec))
-print("divmodCOMPRESSION_FACTORdec = " + str(divmodCOMPRESSION_FACTORdec))
-print("divmodF_CORRECTIONdec = " + str(divmodF_CORRECTIONdec))
-print("\n")
-
+#print("MODF HEXSIZEint = " + str(HEXSIZEint))
+#print("MODF HEXSIZEdec = " + str(HEXSIZEdec))
+#print("MODF COMPRESSION_FACTORint = " + str(COMPRESSION_FACTORint))
+#print("MODF COMPRESSION_FACTORdec = " + str(COMPRESSION_FACTORdec))
+#print("MODF_CORRECTIONint = " + str(F_CORRECTIONint))
+#print("MODF_CORRECTIONdec = " + str(F_CORRECTIONdec))
+#print("\n")
 #
-from decimal import Decimal, getcontext, Context
-getcontext() 
-Context(prec=2)
-TWOPLACES = Decimal(10) ** -2
-Decimal(HEXSIZEdec).quantize(TWOPLACES)
-print(HEXSIZEdec)
-Decimal(COMPRESSION_FACTORdec).quantize(TWOPLACES)
-print(COMPRESSION_FACTORdec)
-Decimal(F_CORRECTIONdec).quantize(TWOPLACES)
-print(F_CORRECTIONdec)
-print("\n")
+#
+## DIVMOD
+#
+#divmodHEXSIZEdec = divmod(HEXSIZEdec,1)
+#divmodCOMPRESSION_FACTORdec = divmod(COMPRESSION_FACTORdec,1)
+#divmodF_CORRECTIONdec = divmod(F_CORRECTIONdec,1)
+#
+#print("divmodHEXSIZEdec = " + str(divmodHEXSIZEdec))
+#print("divmodCOMPRESSION_FACTORdec = " + str(divmodCOMPRESSION_FACTORdec))
+#print("divmodF_CORRECTIONdec = " + str(divmodF_CORRECTIONdec))
+#print("\n")
+#
+##
+#from decimal import Decimal, getcontext, Context
+#getcontext() 
+#Context(prec=2)
+#TWOPLACES = Decimal(10) ** -2
+#Decimal(HEXSIZEdec).quantize(TWOPLACES)
+#print(HEXSIZEdec)
+#Decimal(COMPRESSION_FACTORdec).quantize(TWOPLACES)
+#print(COMPRESSION_FACTORdec)
+#Decimal(F_CORRECTIONdec).quantize(TWOPLACES)
+#print(F_CORRECTIONdec)
+#print("\n")
 
 # ============================================
 # ===========================================
@@ -260,6 +273,10 @@ Create a NUMPY array called "DISTANCES" to contain the value "DISTANCES_FROM_CxC
 
 DISTANCES = numpy.array(DISTANCES_FROM_CxC)
 
+#print("DISTANCES = ") 
+#print(DISTANCES)
+#print("\n")
+ 
 '''
 Recalibrate the areas to set the median centroid in the CxC_DataFrame to
 the 'origin' location (0,0).
@@ -278,16 +295,24 @@ PART FOUR: CALCULATING the ANGLES
 
 xo = []
 for i  in INPUT_POLYGON_CENTROIDS.geometry.x:
-    new = i - CENT_DF.geometry.x
+    new = i - (CENT_DF.geometry.x - 0.1)
     xo.append(new)
 
 yo = []
 for i in INPUT_POLYGON_CENTROIDS.geometry.y:
-    new = i - CENT_DF.geometry.y
+    new = i - (CENT_DF.geometry.y - 0.1)
     yo.append(new)
 
+''' 
+    x == 0  gives a 'divide by zero' error at "gonia = ... " (below). 
 
-x, y = numpy.array(xo) , numpy.array(yo)
+    hence the adjustments 
+    new = i - CENT_DF.geometry.x + 0.1
+    new = i - CENT_DF.geometry.y + 0.1
+'''  
+
+x, y = numpy.array(xo), numpy.array(yo)
+
 
 '''
 Aim is to make all the points to move in a straight line towards the CxC.
@@ -303,6 +328,11 @@ if x=0 and y = nve then gonia = 270
 '''
 
 gonia = numpy.degrees(numpy.arctan(y/x))
+
+#print("gonia = ") 
+#print(gonia)
+#print("\n")
+ 
 
 '''
 ===============================================================================
@@ -336,29 +366,96 @@ yi = numpy.where(((x>0) & (y<=0)),360,0)
 
 '''
 # 'bearing' is 'gonia' converted to 0-360
-# For each point, it is the orientation of the transformation.
+# For each point, it is the direction of the GRAVITY FUNCTION (F).
 ''' 
 bearing = xi + yi + gonia
 
 
 '''
 ===============================================================================
-PART FIVE: EFFECTING THE TRANSFORMATION
+PART FIVE: APPLYING THE GRAVITY FUNCTION (COMPRESSION)
 ===============================================================================
 '''
 
+'''  THE GRAVITY FUNCTION 'F' 
+
+Three variants:
+    
+    UNIFORM 
+    
+    INVERTED GRAVITY  
+    
+    INVERTED GRAVITY ADJUSTED [RECOMMENDED]
+    
+'''
+
+''' 
+UNIFORM GRAVITY FUNCTION 
+
+The transformed (compressed) distance for every observation is the result 
+    of applying the same gravitational force, regardless of distance from CxC. 
+    COMPRESSION_FACTOR is not required.
+ 
+    So, at F = 0.25, transformed (compressed) distance for every observation is
+    one quarter of the original distance.
+'''
+
+#F = 0.25
+
+
+''' 
+INVERTED GRAVITY FUNCTION 
+
+F is *inversely* RELATED TO OBSERVATION DISTANCE FROM CxC AS A PROPORTION
+    OF THE MAXIMUM DISTANCE FROM THE CxC
+    
+    The gravitational force acting on an observation is inversely proportional 
+    to that observation's distance from the CxC.
+   
+    REMINDER !
+
+    "DISTANCES" is a a NUMPY array that contains the value "DISTANCES_FROM_CxC" 
+    "DISTANCES_FROM_CxC"is a list of the distance of each point from the CxC.
+'''
+
+#F = abs(1 - (DISTANCES/(COMPRESSION_FACTOR*(DISTANCES.max()))))
+
+''' INVERTED GRAVITY FUNCTION - adjusted
+
+    The gravitational force acting on an observation is inversely proportional 
+    to that observation's distance from the CxC BUT ADJUSTED for 20% of the 
+    difference between that observation's distance from the CxC and the 
+    MEDIAN difference. The MEAN DIFFERENCE would favour outliers distant from 
+    the CxC, but we want to affect central cases.      
+
+    REMINDER !
+
+    "DISTANCES" is a a NUMPY array that contains the value "DISTANCES_FROM_CxC" 
+    "DISTANCES_FROM_CxC"is a list of the distance of each point from the CxC.
 
 '''
-#  The distances of the transformation
-#  f = the transformation function. 
-'''
 
-f = abs(1 - DISTANCES/(COMPRESSION_FACTOR*(DISTANCES.max())))
+Fadj = 0.275 * numpy.median(DISTANCES)
 
-f = numpy.maximum(f,F_CORRECTION)
+F = abs(1 - ((DISTANCES + Fadj)/(COMPRESSION_FACTOR*(DISTANCES.max()))))
 
 
-tr = f*DISTANCES
+''' 
+Using 'F', calculates the COMPRESSED distance for each observation in turn.
+''' 
+
+tr = F*DISTANCES  
+
+#tr = numpy.sqrt(DISTANCES)  
+#tr = DISTANCES ** 0.33
+#tr = DISTANCES ** 0.25
+#tr = DISTANCES ** 0.20
+
+#print("F")
+#print(F)
+#print("tr")
+#print(tr)
+
 
 INPUT_POLYGON['trans_distance'] = tr
 x1 = numpy.cos(numpy.radians(bearing))[:, 0]*numpy.array(tr)
@@ -560,7 +657,7 @@ for i in SNAPPED:
 '''selecting a list of HEXAGONS with the SNAPPED centroids '''
 HEXAGONS = geopandas.GeoSeries(SELECTED_HEXES_LIST)
 
-#print("SELECTED_HEXES_LIST)
+#print("SELECTED_HEXES_LIST")
 #print(HEXAGONS)
 #print("\n")
 
@@ -622,7 +719,7 @@ HEXMAP_GDF['coords'] = [coords[0] for coords in HEXMAP_GDF['coords']]
 #pylab.savefig(OUTPUT_IMAGE_PATH + MYHEXMAP + '_distances.png')
 
 ''' Display and save image of the distances of the transformed GEOGRAPHY centroids from the original CxC '''
-HEXMAP_GDF.plot(column='trans_distance', scheme='QUANTILES', k=5, cmap='OrRd', legend=True)
+HEXMAP_GDF.plot(scheme='QUANTILES', k=5, cmap='OrRd', legend=True)
 pylab.savefig(OUTPUT_IMAGE_PATH + MYHEXMAP + '_xformed_distances.png')
 
 ''' Display and save image of the processed hexmap '''
@@ -657,4 +754,4 @@ END_TIME = time.time()
 print("Generation of  '" + MYHEXMAP + "'  took: {}".format(END_TIME - START_TIME) + " seconds")
 print("\n")
    
-del HEXAGONS, con, t1, t2, x2, y2, HEXMAP_GDF, INPUT_POLYGON_CENTROIDS, SELECTED_HEXES_LIST, SNAPPED, SNAPLIST, HEXES, LINES, VORONOI_BDY, minX, minY, maxX, maxY, GEOMETRY2, Xg, Yg, Y1, X1, Y2, X2, CENTROID_OF_CENTROIDS, CENT_DF, DISTANCES, DISTANCE_BETWEEN_PTS, DISTANCES_FROM_CxC, SELECTED_POINT, MESH, i, k, SHAPELY_MULTI_POINT, HEXSIZE, polygonize, START_TIME, parameters, GEOGRAPHY_NAME, HEXORIENTATION, COMPRESSION_FACTOR, OUTPUT_FILE_TYPE, INPUT_POLYGON_PATH, OUTPUT_IMAGE_PATH, OUTPUT_HEXMAP_PATH, F_CORRECTION, MYHEXMAP, STYLE
+del HEXAGONS, con, t1, t2, x2, y2, HEXMAP_GDF, INPUT_POLYGON_CENTROIDS, SELECTED_HEXES_LIST, SNAPPED, SNAPLIST, HEXES, LINES, VORONOI_BDY, minX, minY, maxX, maxY, GEOMETRY2, Xg, Yg, Y1, X1, Y2, X2, CENTROID_OF_CENTROIDS, CENT_DF, DISTANCES, DISTANCE_BETWEEN_PTS, DISTANCES_FROM_CxC, SELECTED_POINT, MESH, i, k, SHAPELY_MULTI_POINT, HEXSIZE, polygonize, START_TIME, parameters, GEOGRAPHY_NAME, HEXORIENTATION, COMPRESSION_FACTOR, OUTPUT_FILE_TYPE, INPUT_POLYGON_PATH, OUTPUT_IMAGE_PATH, OUTPUT_HEXMAP_PATH, MYHEXMAP, STYLE, F, F_CORRECTION
