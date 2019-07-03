@@ -47,12 +47,15 @@ import HexTool__Setup as parameters
 #HEXORIENTATION = parameters.HEXORIENTATION
 #COMPRESSION_FACTOR = parameters.COMPRESSION_FACTOR
 #
+#F_CORRECTION = parameters.F_CORRECTION
+#
 #OUTPUT_FILE_TYPE = parameters.OUTPUT_FILE_TYPE
 
 INPUT_POLYGON_PATH = parameters.INPUT_POLYGON_PATH
 OUTPUT_IMAGE_PATH = parameters.OUTPUT_IMAGE_PATH
 OUTPUT_HEXMAP_PATH = parameters.OUTPUT_HEXMAP_PATH
 OUTPUT_FILE_TYPE = parameters.OUTPUT_FILE_TYPE
+F_CORRECTION = parameters.F_CORRECTION
 GEOGRAPHY_NAME = parameters.GEOGRAPHY_NAME
 HEXSIZE = parameters.HEXSIZE
 HEXORIENTATION = parameters.HEXORIENTATION
@@ -76,6 +79,7 @@ print("\n")
 
 #print("base HEXSIZE = " + str(HEXSIZE))
 #print("base COMPRESSION_FACTOR = " + str(COMPRESSION_FACTOR))
+#print("base MODF_CORRECTION = " + str(F_CORRECTION))
 #print("\n")
 
 # MODF
@@ -84,6 +88,7 @@ print("\n")
 #from math import modf
 #HEXSIZEdec, HEXSIZEint = math.modf(HEXSIZE)
 #COMPRESSION_FACTORdec, COMPRESSION_FACTORint = math.modf(COMPRESSION_FACTOR)
+#F_CORRECTIONdec, F_CORRECTIONint = math.modf(F_CORRECTION)
 ##
 #
 #
@@ -91,6 +96,8 @@ print("\n")
 #print("MODF HEXSIZEdec = " + str(HEXSIZEdec))
 #print("MODF COMPRESSION_FACTORint = " + str(COMPRESSION_FACTORint))
 #print("MODF COMPRESSION_FACTORdec = " + str(COMPRESSION_FACTORdec))
+#print("MODF_CORRECTIONint = " + str(F_CORRECTIONint))
+#print("MODF_CORRECTIONdec = " + str(F_CORRECTIONdec))
 #print("\n")
 #
 #
@@ -98,9 +105,11 @@ print("\n")
 #
 #divmodHEXSIZEdec = divmod(HEXSIZEdec,1)
 #divmodCOMPRESSION_FACTORdec = divmod(COMPRESSION_FACTORdec,1)
+#divmodF_CORRECTIONdec = divmod(F_CORRECTIONdec,1)
 #
 #print("divmodHEXSIZEdec = " + str(divmodHEXSIZEdec))
 #print("divmodCOMPRESSION_FACTORdec = " + str(divmodCOMPRESSION_FACTORdec))
+#print("divmodF_CORRECTIONdec = " + str(divmodF_CORRECTIONdec))
 #print("\n")
 #
 ##
@@ -112,6 +121,8 @@ print("\n")
 #print(HEXSIZEdec)
 #Decimal(COMPRESSION_FACTORdec).quantize(TWOPLACES)
 #print(COMPRESSION_FACTORdec)
+#Decimal(F_CORRECTIONdec).quantize(TWOPLACES)
+#print(F_CORRECTIONdec)
 #print("\n")
 
 # ============================================
@@ -362,46 +373,25 @@ bearing = xi + yi + gonia
 
 '''
 ===============================================================================
-PART FIVE: THE (ANTI)GRAVITY MODEL (COMPRESSION)
+PART FIVE: APPLYING THE GRAVITY FUNCTION (COMPRESSION)
 ===============================================================================
 '''
 
-'''  
-THE (ANTI)GRAVITY MODEL, 'F' 
-''' 
-
-'''
-F is the 'antigravitational force' which pulls the centroids towards the CxC. 
-
-It impinges on instances MORE more with increasing distance * from the CxC 
-and is consequently an inversion of normal gravity.
-
-The key componments are 
-
-    "DISTANCES_FROM_CxC": a list of the distance of each point from the CxC.
-    "DISTANCES": a NUMPY array that contains the value "DISTANCES_FROM_CxC" 
-    The maximum and median valuies from the array "DISTANCES"
-    A "COMPRESSION_FACTOR". This on an open scale (1-1,000), but is most 
-    effective between 5 and 1.2. Counter-intuitively, the COMPRESSION_FACTOR is 
-    *strong* when CF = 1 and *weak* when CF= 7.
+'''  THE GRAVITY FUNCTION 'F' 
 
 Three variants:
     
     UNIFORM 
     
-    ANTIGRAVITY  
+    INVERTED GRAVITY  
     
-    ANTIGRAVITY ADJUSTED [RECOMMENDED]
+    INVERTED GRAVITY ADJUSTED [RECOMMENDED]
     
 '''
 
-'''  
-=====================
-UNIFORM GRAVITY MODEL
-=====================
 ''' 
+UNIFORM GRAVITY FUNCTION 
 
-'''
 The transformed (compressed) distance for every observation is the result 
     of applying the same gravitational force, regardless of distance from CxC. 
     COMPRESSION_FACTOR is not required.
@@ -413,123 +403,47 @@ The transformed (compressed) distance for every observation is the result
 #F = 0.25
 
 
-'''  
-=================
-ANTIGRAVITY MODEL
-=================
 ''' 
+INVERTED GRAVITY FUNCTION 
 
-'''
 F is *inversely* RELATED TO OBSERVATION DISTANCE FROM CxC AS A PROPORTION
     OF THE MAXIMUM DISTANCE FROM THE CxC
     
     The gravitational force acting on an observation is inversely proportional 
-    to that observation's distance from the CxC. 
-    
-    This function produces erxcessive white space closer in towards the CxC, 
-    because observations towards the centre are subject to increasing friction 
-    (less antigravity) and move less and less towards the CxC. 
-    
-    This is why I developed the ANTIGRAVITY FUNCTION - adjusted (below)
-      
+    to that observation's distance from the CxC.
+   
+    REMINDER !
+
+    "DISTANCES" is a a NUMPY array that contains the value "DISTANCES_FROM_CxC" 
+    "DISTANCES_FROM_CxC"is a list of the distance of each point from the CxC.
 '''
 
-# F = abs(1 - (DISTANCES/(COMPRESSION_FACTOR*(DISTANCES.max()))))
+#F = abs(1 - (DISTANCES/(COMPRESSION_FACTOR*(DISTANCES.max()))))
 
 
-'''  
-============================
-ANTIGRAVITY MODEL - adjusted
-============================
-''' 
+''' INVERTED GRAVITY FUNCTION - adjusted
 
-'''
-The gravitational force acting on an observation is inversely proportional 
-    to the distance from that observation to the CxC, BUT ADJUSTED for a 
-    proportion of the difference between the distance from that observation 
-    to the CxC and the MEDIAN distance.
-    
-    (MEAN DIFFERENCE would mainly impact observations distant from the CxC,
-    but we mainly want to affect central cases, hence MEDIAN)      
+    The gravitational force acting on an observation is inversely proportional 
+    to that observation's distance from the CxC BUT ADJUSTED for 20% of the 
+    difference between that observation's distance from the CxC and the 
+    MEDIAN difference. The MEAN DIFFERENCE would favour outliers distant from 
+    the CxC, but we want to affect central cases.      
+
+    REMINDER !
+
+    "DISTANCES" is a a NUMPY array that contains the value "DISTANCES_FROM_CxC" 
+    "DISTANCES_FROM_CxC"is a list of the distance of each point from the CxC.
 
 '''
 
-''' 
-    MAXIMUM DISTANCE FROM THE CxC 
-'''
+Fadj = 0.275 * numpy.median(DISTANCES)
 
-MAX_D = numpy.max(DISTANCES)
-
-''' 
-    MAX_D raised by 10%.
-    Useful because distortion occurs where DISTANCE = MAX_DISTANCE 
-'''
-MAX_D__raised = MAX_D * 1.10    
-
-'''
-    MEDIAN DISTANCE FROM THE CxC
-'''
-
-MEDIAN_D = numpy.median(DISTANCES)
-
-''' 
-
-DISTANCE DIFFERENCE BETWEEN EACH OBSERVATION AND THE MEDIAN DISTANCE 
-    Positive when the observation is located between the CxC and the MEDIAN_D
-    Negative when the observation is located between the MEDIAN_D and the MAX_D
-
-    As such, it will be used to adjust the antigravity function, which has more
-    impact on distant observations than on those close to the CxC
-
-'''
-
-DIFF_D = DISTANCES - MEDIAN_D
-
-''' 
-    An arbitrary adjuster to the distance differences 
-'''
-
-Fadj = 0.4
-
-''' 
-DISTANCE DIFFERENCE BETWEEN EACH OBSERVATION AND THE MEDIAN DISTANCE 
-    Adjusted by Fadj
-'''
-
-DIFF_Dadj = DIFF_D * Fadj
-
-# DISTANCESadj = DISTANCES 
-
-#
-#print("MAX_D")
-#print(MAX_D)
-#print("MAX_D__raised")
-#print(MAX_D__raised)
-#print("MEDIAN_D")
-#print(MEDIAN_D)
-#print("DISTANCES")
-#print(DISTANCES)
-#print("DIFF_D")
-#print(DIFF_D)
-#print("Fadj")
-#print(Fadj)
-#print("DIFF_Dadj")
-#print(DIFF_Dadj)
+F = abs(1 - ((DISTANCES + Fadj)/(COMPRESSION_FACTOR*(DISTANCES.max()))))
 
 
-F = abs(1 - (DISTANCES + DIFF_Dadj)/(COMPRESSION_FACTOR*(DISTANCES.max())))
 ''' 
 Using 'F', calculates the COMPRESSED distance for each observation in turn.
 ''' 
-
-'''
-===========================================
-APPLYING THE (ANTI)GRAVITY FUNCTION
-
-tr =  TRANSFORMED LOCATION
-===========================================
-
-'''
 
 tr = F*DISTANCES  
 
@@ -841,14 +755,4 @@ END_TIME = time.time()
 print("Generation of  '" + MYHEXMAP + "'  took: {}".format(END_TIME - START_TIME) + " seconds")
 print("\n")
    
-del HEXAGONS, con, t1, t2, x2, y2, HEXMAP_GDF, INPUT_POLYGON_CENTROIDS, SELECTED_HEXES_LIST, SNAPPED, SNAPLIST, HEXES, LINES, VORONOI_BDY, minX, minY, maxX, maxY, GEOMETRY2, Xg, Yg, Y1, X1, Y2, X2, CENTROID_OF_CENTROIDS, CENT_DF, DISTANCES, DISTANCE_BETWEEN_PTS, DISTANCES_FROM_CxC, SELECTED_POINT, MESH, i, k, SHAPELY_MULTI_POINT, HEXSIZE, polygonize, START_TIME, parameters, GEOGRAPHY_NAME, HEXORIENTATION, COMPRESSION_FACTOR, OUTPUT_FILE_TYPE, INPUT_POLYGON_PATH, OUTPUT_IMAGE_PATH, OUTPUT_HEXMAP_PATH, MYHEXMAP, STYLE, F, MAX_D, MAX_D__raised, MEDIAN_D, DIFF_D, Fadj, DIFF_Dadj
-
-
-
-
-
-
-
-
-
-
+del HEXAGONS, con, t1, t2, x2, y2, HEXMAP_GDF, INPUT_POLYGON_CENTROIDS, SELECTED_HEXES_LIST, SNAPPED, SNAPLIST, HEXES, LINES, VORONOI_BDY, minX, minY, maxX, maxY, GEOMETRY2, Xg, Yg, Y1, X1, Y2, X2, CENTROID_OF_CENTROIDS, CENT_DF, DISTANCES, DISTANCE_BETWEEN_PTS, DISTANCES_FROM_CxC, SELECTED_POINT, MESH, i, k, SHAPELY_MULTI_POINT, HEXSIZE, polygonize, START_TIME, parameters, GEOGRAPHY_NAME, HEXORIENTATION, COMPRESSION_FACTOR, OUTPUT_FILE_TYPE, INPUT_POLYGON_PATH, OUTPUT_IMAGE_PATH, OUTPUT_HEXMAP_PATH, MYHEXMAP, STYLE, F, F_CORRECTION

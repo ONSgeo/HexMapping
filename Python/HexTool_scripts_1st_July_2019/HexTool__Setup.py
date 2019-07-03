@@ -32,8 +32,8 @@ ROOT LOCATION
 
 
 #ROOT_FOLDER = r'C:/HEXMAPS_beta/'   # - ONS - ONS27797
-ROOT_FOLDER = r'D:/HEXMAPS_beta/' 	# - ONS - geoCentaurs
-#ROOT_FOLDER = r'G:/HEXMAPS_beta/' 	# - HOME - MESH II
+#ROOT_FOLDER = r'D:/HEXMAPS_beta/' 	# - ONS - geoCentaurs
+ROOT_FOLDER = r'G:/HEXMAPS_beta/' 	# - HOME - MESH II
 
 # INPUT GEOGRAPHY PATH
 INPUT_POLYGON_PATH = ROOT_FOLDER + 'GIS/Input/Geometry/'
@@ -75,8 +75,37 @@ WHAT TYPE OF HEXMAP DO YOU WANT TO CREATE?
 
 ''' Or, for COMPRESSED HEXMAP ''' 
 
-#import HexTool__Compressed 
-import HexTool__Compressed__030719
+import HexTool__Compressed 
+
+'''
+.............................................<built-in method mean of numpy.ndarray object at 0x000000000F4F06C0>810
+
+F_CORRECTION
+.............................................
+'''
+
+''' 
+'f' is the 'gravity function' which, in the 'Compressed' script, pulls 
+the centroids towards the CxC. It impinges on instances MORE more with 
+increasing distance * from the CxC.
+
+Counter-intuitively, it is at its *strongest when zero* and *weakest when 1.
+
+At high compression rates (i.e. CF < 2), peripheral instances can 'overtake' 
+interior instances during the transformation towards the CxC 
+
+Any hexes with actual 'f' value of zero will be pulled *right onto* the CxC.
+
+So F_CORRECTION sets minimum f to 0.1. 
+
+Values below this will be set to 0.1. 
+'''
+
+F_CORRECTION = 0.3
+
+#F_CORRECTION = 0.1
+#F_CORRECTION = 0.05
+#F_CORRECTION = 0.01 
 
 '''
 .............................................
