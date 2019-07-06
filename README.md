@@ -240,4 +240,4 @@ Under some circumstances, multithreading might help.
 
 As a cosmetic touch, perhaps a completion bar / hourglass / sound on completion could be added?
 
-Any assistance towards achievement of these goals would be greatly appreciated.
+Any assistance towards achievement  of these goals would be greatly appreciated.
