@@ -60,11 +60,17 @@ Once generated, the EAC provides a single standard layout that can be linked to 
 
 ### The ONS hexmapping tool
 
-Within this project, we have concentrated upon the automatic generation of hexmaps using Python. Our code runs quickly and can operate on any polygon dataset and at any scale.  
+Within this project, we have concentrated upon automatic hexmap generation using Python. Our code runs quickly and can operate on any polygon dataset at any scale.
 
 We have tested the product on a wide range of distinctive and challenging geographies. These include countries with predominantly north-south extent (Chile, Italy, Norway), countries with east-west extent (Russia, USA), irregular shapes (Croatia), exclaves (Russia’s Kaliningrad), doughnuts (Germany - Berlin within Brandenburg), complex archipelagos (Indonesia). It works on all, regardless of projection or scale. Indeed, it works equally well on all the stars within ten parsecs of Sol (our sun) and a tiny detail from an electron microscope image of the brain of a fly.
 
-As your input geography is imported, its projection is noted: it is then turned into pure geometry for the hexmap creation and then re-exported back to its original projection. Two hexmap variants are available. The BASIC variant overlays the original input geography and the two may be used together. The COMPRESSEED hexmap is designed to stand alone, without the original geography or a base map. However, because it is in the same projection as the original input geography and the basic hexmap, they may be overlain for testing purposes, to assess the effectiveness of the compression.
+As your input geography is imported, its projection is noted: it is then turned into pure geometry for the hexmap creation and then re-exported back to its original projection. Two hexmap variants are available. The basic variant overlays the original input geography and the two may be used together. The compressed hexmap is designed to stand alone, without the original geography or a base map. However, because it is in the same projection as the original input geography and the basic hexmap, you may overlay them for testing purposes, to assess the effectiveness of the compression.
+
+The tool works on an inverted gravity model (HexTool__Compressed.py - PART FIVE: THE INVERTED GRAVITY MODEL (COMPRESSION)).
+
+Observations are drawn towards the centre of the dataset, defined by the centroid of all the areas’ centroids (Centroid of Centroids (CxC)). Starting out from the CxC, the gravitational force F is negligible, but increases in power with increasing distance from the CxC. However, this produces increasing amounts of white space closer in towards the CxC, because observations towards the centre are subject to increasing friction (less antigravity) and move less and less towards the CxC.
+I therefore developed the modified inverted gravity model, which adjusts F by reference to the
+difference between the distance from any observation to the CxC and the MEDIAN distance.
 
 Speed of execution depends upon your PC’s resources and the complexity of the input spatial dataset: for over ¾ of tested geographies, the compressed hexmap is created within ten seconds. Only three took more than one minute – the 1,973 Cantons of France (138s); the 1,385 NUTS3 units of the WEU and EFTA (150 s) and the 7,201 MSOAs of England and Wales (40 minutes).
  
@@ -94,7 +100,7 @@ Speed of execution depends upon your PC’s resources and the complexity of the 
 
 ### The Compression Algorithm
 
-How the compression works can perhaps most effectively be shown on the example of districts in the Russian Federation. This is on account of its very skewed composition = there are 85 districts of which the smallest (Sevastopol) is 616 sq.km. The largest (Sakha (Yakutia)) covers over 3 million sq.km., while 30 districts are over 100,000 km sq. km. in area, and these are all in the north or east.  In addition, Kaliningrad and Sevastopol + the Crimea (not internationally recognized) are detached from mainland Russia.
+How the compression works can perhaps most effectively be shown on the example of districts in the Russian Federation. This is on account of its very skewed composition = there are 85 districts of which the smallest (Sevastopol) is 616 sq.km. The largest (Sakha (Yakutia)) covers over 3 million sq.km., while 30 districts are over 100,000 km sq. km. in area, and these are all in the north or east.  In addition, Sevastopol + the Crimea (de facto but not de jure administered by Russia) and Kaliningrad are detached from mainland Russia. This is purely for illustrative purposes and in no way a political statement.
 
 <p align = "center">
 <img src="MD_images/Russia_oblasts_190km_no_compression.png" width="100%" align="center">
