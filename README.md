@@ -188,7 +188,9 @@ Two datasets have been kindly provided by Dr Benjamin Ciotti of the University o
 
 <p align = "center">
 <img src="MD_images/Ciotti_beach_data_stations.png" width="40%" align="center"> <img src="MD_images/Ciotti_beach_data__Regions_and_beaches.png" width="40%" align="center">
-	
+</p>
+
+<p align = "center">
 <img src="MD_images/Ciotti_beach_data__particle_size_by_beach.png" width="40%" align="center"> <img src="MD_images/Ciotti_beach_data__TidalRange_by_beach.png" width="40%" align="center">
 </p>
 
@@ -233,11 +235,11 @@ Add some of your own data (as ESRI shapefile) to the INPUT_POLYGON_PATH folder a
 
 ## FUTURE OPTIMISATIONS 
 
-•	An outline of the original geography would assist orientation. Unfortunately, the compression algorithm operates on hexagons and not the original polygons.
-•	Currently, the optimal values for hex size, hex orientation and the compression factor must all be obtained by trial and error. It should be possible to calculate optimal values by reference to the perimeter envelope of the input geography, the number of spatial entities within it and the units of the spatial reference system (projection). 
-•	The tool should be able to accept as input any spatial file format recognised by Fiona, but it’s currently set up only to accept ESRI shapefiles as input and to write output also only to shapefile. Adding other formats at both ends (e.g. geopackage, geoJSON) – has been experimented with but not implemented.
-•	The basic and compressed code began as a single script, remain essentially the same and should really be merged back into each other, incorporating a conditional IF COMPRESSED HEXMAP – ACTIVATE COMPRESSION CODE – ELSE SKIP clause. Otherwise there's double the maintenance.  A 'compressed' switch should be added to the parameters. 
-•	Some of the linear code ought to be rewritten as functions
-•	As a cosmetic touch, perhaps a completion bar / hourglass / sound on completion could be added.
-•	Under some circumstances, multithreading would help.
+-	An outline of the original geography would assist orientation. Unfortunately, the compression algorithm operates on hexagons and not the original polygons.
+-	Currently, the optimal values for hex size, hex orientation and the compression factor must all be obtained by trial and error. It should be possible to calculate optimal values by reference to the perimeter envelope of the input geography, the number of spatial entities within it and the units of the spatial reference system (projection). 
+-	The tool should be able to accept as input any spatial file format recognised by Fiona, but it’s currently set up only to accept ESRI shapefiles as input and to write output also only to shapefile. Adding other formats at both ends (e.g. geopackage, geoJSON) – has been experimented with but not implemented.
+-	The basic and compressed code began as a single script, remain essentially the same and should really be merged back into each other, incorporating a conditional IF COMPRESSED HEXMAP – ACTIVATE COMPRESSION CODE – ELSE SKIP clause. Otherwise there's double the maintenance.  A 'compressed' switch should be added to the parameters. 
+-	Some of the linear code ought to be rewritten as functions
+-	As a cosmetic touch, perhaps a completion bar / hourglass / sound on completion could be added.
+-	Under some circumstances, multithreading would help.
 
