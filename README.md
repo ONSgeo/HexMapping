@@ -111,7 +111,7 @@ As we have already seen, a choropleth map of this geography will be dominated by
 On the basic hexmap, each hexagon is rooted to the geometric centroid of its district. The geographical distribution is faithfully represented and the hexmap accurately overlays on a basemap. But in the case of Russian districts, the hex size that best achieves this (each hex being 190,000 km top to bottom [they’re pointy-uppy]) means that there’s an enormous amount of empty space, and this results in small hexagons whose labels are hard to read. It would also be hard to interpret any thematic data that was pinned to them (by colour). So, this is a geography for which a compressed hex map would make perfect sense.
 
 <p align = "center">
-<img src="MD_images/Russia_oblasts_190km_basic_perpheral6" width="100%" align="center">
+<img src="MD_images/Russia_oblasts_190km_basic_perpheral6.png" width="100%" align="center">
 </p>
 
 We drop the basemap but, for the moment, retain the boundaries for reference. Six peripheral districts are labelled - these will have furthest to travel towards the centroid of centroids (CxC).  
@@ -240,4 +240,4 @@ Under some circumstances, multithreading might help.
 
 As a cosmetic touch, perhaps a completion bar / hourglass / sound on completion could be added?
 
-Any assistance towards achievement  of these goals would be greatly appreciated.
+Any assistance towards achievement of these goals would be greatly appreciated.
