@@ -180,15 +180,23 @@ If excessive space between the individual hexagons on a compressed hexmap distur
 
 The methodology may have applicability well beyond the scales normally used for cartography, and well beyond social geostatistics. Whether the application of this techniques to data at these scales, and which are inherently three-dimensional, is helpful or even appropriate, must be left to the relevant subject experts.
 
-Our first example is a set of marine biology sample points in a small part of Plymouth harbour, used with the approval of Dr Benjamin Ciotti of the University of Plymouth's School of Biological and Marine Sciences.  The x-y location of each sampled point was recorded along with depth and data on the various species found there. Given the clustering and dispersal of the sampling points, employing proportional symbols in their actual locations would be inefficient, with both large gaps and overlaps. The sampling data may be communicated more effectively with a compressed hexmap. 
+Two datasets have been kindly provided by Dr Benjamin Ciotti of the University of Plymouth’s School of Marine Biology. The first is a set of marine biology sample points in a small part of Plymouth harbour.  The x-y location of each sampled point was recorded along with depth and data on the various species found there. The second is a selection of sampled beaches on the western coast of Scotland. In both cases, the dispersal and clustering of the sampling points makes the use of proportional symbols in their actual locations inefficient, with both large gaps and overlaps. In both cases, compressed hexmap are more effective.  
 
 <p align = "center">
 <img src="MD_images/Ciotti.png" width="80%" align="center">
 </p>
 
+<p align = "center">
+<img src="MD_images/Ciotti_beach_data_stations.png" width="40%" align="center"> <img src="MD_images/Ciotti_beach_data__Regions_and_beaches.png" width="40%" align="center">
+	
+<img src="MD_images/Ciotti_beach_data__particle_size_by_beach.png" width="40%" align="center"> <img src="MD_images/Ciotti_beach_data__TidalRange_by_beach.png" width="40%" align="center">
+</p>
+
+
+
 #### Microscopic
 
-Zooming right in, we have generated a compressed hexmap from an electron microscope image of the brain of a fly.  In the absence of spatial data on the image (covering 4mm2), and purely as a proof of concept, I converted the image file to vectors and applied a simple Cartesian coordinate system. I then created and mapped a simple (and meaningless) 8-value categorical scale.  
+Zooming right in, we have generated a (proof-of-concept) compressed hexmap from an electron microscope image of the brain of a fly.  In the absence of spatial data on the image and purely as a proof of concept, I converted the image file to vectors and applied a simple Cartesian coordinate system. I then created and mapped a simple (and meaningless) 8-value categorical scale on a small part of the image which, at 1:1200, equates to 0.000025 mm2.
 
 <p align = "center">
 <img src="MD_images/FlyBrainSliceData_II.png" width="80%" align="center">
@@ -196,7 +204,7 @@ Zooming right in, we have generated a compressed hexmap from an electron microsc
 
 #### Cosmic
 
-Looking further afield, the technique may also be used at the cosmic scale. The HYG Database is a meta-catalogue containing over 120,000 stars. It includes the x,y,z, Cartesian coordinates of the star (in a system based on the equatorial coordinates as seen from Earth), distance from earth and a range of other fields. Once a suitable buffer is generated for each point to create polygons, a compressed hexmap may easily be generated for any subset of the catalogue. We have generated a compressed hexmap of all the stars within ten parsecs of Sol (our sun).   
+Looking further afield, the technique may also be used at the cosmic scale. The HYG Database is a meta-catalogue containing over 120,000 stars. It includes the x,y,z, Cartesian coordinates of the star (in a system based on the equatorial coordinates as seen from Earth), distance from earth and a range of other fields. Once a suitable buffer is generated for each point to create polygons, a compressed hexmap may easily be generated for any subset of the catalogue. We have generated a compressed hexmap of all the stars within ten parsecs of Sol (our sun).    
 
 <p align = "center">
 <img src="MD_images/The HYG database of stars.png" width=80%" align="center">
@@ -208,32 +216,28 @@ We have created a tool that can be used to quickly and efficiently create hex-ba
 
 The tool can create BASIC or COMPRESSED hexmap from ESRI shapefile *polygon* input. A point dataset must first be converted to polygon by generation of buffers.
 
-Your polygon input dataset must be placed in the INPUT_POLYGON folder, whose location is defined in script ‘HexTool__Setup.py’. It must also be added to ‘HexTool__Geographies.py’ as GEOGRAPHY_NAME. You also have to select values for HEXSIZE, HEXORIENTATION and COMPRESSION_FACTOR.  Note that a value is required for COMPRESSION_FACTOR even if you are creating a basic hexmap. Use ‘3’ as the default.  Geometry and image files will be generated and placed in the output folders specified.
+Your polygon input dataset must be placed in the INPUT_POLYGON folder, whose location is defined in script ‘HexTool__Setup.py’. It must also be added to ‘HexTool__Geographies.py’ as GEOGRAPHY_NAME. You also have to select values for HEXSIZE (in units of the projection) , HEXORIENTATION (1 or 2) and COMPRESSION_FACTOR (sensible range 1.2 -> 4).  
 
-Note: if you use a decimal for the COMPRESSION_FACTOR, e.g.2.5, while the folder for the output will be named correctly (e.g. ID_KABUPATEN__EPSG_4326_WGS84_0.6_1_CF2.5_hexmap), the name of the shapefile within it will be curtailed to the decimal (e.g. ID_KABUPATEN__EPSG_4326_WGS84_0.6_1_CF2). If you try several options (e.g. CH+ 2.8, 2.6, 2.4) they will all be in separate, correctly named folders, but will have identical filenames. 
+Note that a value is required for COMPRESSION_FACTOR even if you are creating a basic hexmap. Use ‘2’ as the default.  Geometry and image files will be generated and placed in the output folders specified.
+
+Note: if you use a decimal for the COMPRESSION_FACTOR, e.g.2.5, while the folder for the output will be named correctly (e.g. ZAF_adm2_mainland__0.4_1__CF3___C_HXMP), the name of the shapefile within it will be curtailed at the decimal point (e.g. ZAF_adm2_mainland__0). If you try several options (e.g. CF 2.8, 2.6, 2.4) they will all be in separate, correctly named folders, but will have identical filenames. 
 
 ## RECOMMENDED TESTING
 
-Users are invited to try out some of the geographies supplied with this tool with the parameters as set up in the Python script ‘HexTool__Geographies_UK.py’ or ‘HexTool__Geographies_Elsewhere.py’, respectively. 
+First: try out some of the geographies supplied with this tool with the parameters as set up in the Python script ‘HexTool__Geographies_UK.py’ or ‘HexTool__Geographies_Elsewhere.py’. 
 
 Then see what happens when you alter HEXSIZE, HEXORIENTATION and COMPRESSION_FACTOR.
 
-Add some of your own data (as ESRI shapefile) to the INPUT_POLYGON_PATH and to the appropriate ‘HexTool__Geographies_....py’  folder. Experiment with the three parameters.
+Add some of your own data (as ESRI shapefile) to the INPUT_POLYGON_PATH folder and to the appropriate ‘HexTool__Geographies_....py’ script. Experiment with the three parameters.
+
 
 ## FUTURE OPTIMISATIONS 
 
-Currently, the optimal values for HEXSIZE, HEXORIENTATION and COMPRESSION_FACTOR must all be obtained by trial and error. It should be possible to calculate optimal values by reference to the perimeter envelope of the input geography, the number of spatial entities within it and the units of the spatial reference system (projection). 
+•	An outline of the original geography would assist orientation. Unfortunately, the compression algorithm operates on hexagons and not the original polygons.
+•	Currently, the optimal values for hex size, hex orientation and the compression factor must all be obtained by trial and error. It should be possible to calculate optimal values by reference to the perimeter envelope of the input geography, the number of spatial entities within it and the units of the spatial reference system (projection). 
+•	The tool should be able to accept as input any spatial file format recognised by Fiona, but it’s currently set up only to accept ESRI shapefiles as input and to write output also only to shapefile. Adding other formats at both ends (e.g. geopackage, geoJSON) – has been experimented with but not implemented.
+•	The basic and compressed code began as a single script, remain essentially the same and should really be merged back into each other, incorporating a conditional IF COMPRESSED HEXMAP – ACTIVATE COMPRESSION CODE – ELSE SKIP clause. Otherwise there's double the maintenance.  A 'compressed' switch should be added to the parameters. 
+•	Some of the linear code ought to be rewritten as functions
+•	As a cosmetic touch, perhaps a completion bar / hourglass / sound on completion could be added.
+•	Under some circumstances, multithreading would help.
 
-The transformation function could be refined with the inclusion of a friction function to supplement the existing gravity function. There is something similar in D3.js
-
-The tool should be able to accept as input any spatial file format recognised by Fiona, but it’s currently set up only to accept ESRI shapefiles as input and to write output also only to shapefile. Adding other formats at both ends (e.g. geopackage, geoJSON) – has been experimented with but not implemented.
-
-The BASIC and COMPRESSED code began as a single script but were separated. They remain essentially the same and should really be merged back into each other, incorporating a conditional IF COMPRESSED HEXMAP – ACTIVATE COMPRESSION CODE – ELSE SKIP clause.  Otherwise there's double the maintenance.  A 'compressed' switch could be added to the parameters. 
-
-Some of the linear code ought to be rewritten as functions
-
-Under some circumstances, multithreading might help.
-
-As a cosmetic touch, perhaps a completion bar / hourglass / sound on completion could be added?
-
-Any assistance towards achievement of these goals would be greatly appreciated.
