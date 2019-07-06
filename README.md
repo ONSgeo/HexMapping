@@ -74,7 +74,7 @@ difference between the distance from any observation to the CxC and the MEDIAN d
 
 Speed of execution depends upon your PC’s resources and the complexity of the input spatial dataset: for over ¾ of tested geographies, the compressed hexmap is created within ten seconds. Only three took more than one minute – the 1,973 Cantons of France (138s); the 1,385 NUTS3 units of the WEU and EFTA (150 s) and the 7,201 MSOAs of England and Wales (40 minutes).
  
-### USING THE TOOL [see [the report](https://github.com/ONS-Geography-Research/HexMapping/blob/master/Report/Hexmapping_2019_06_24_0910.pdf) for details]
+### USING THE TOOL [see [the report](https://github.com/ONS-Geography-Research/HexMapping/blob/master/Report/Hexmapping_Report__FINAL.pdf) for details]
 
 #### A. PREREQUISITES
 
@@ -103,27 +103,23 @@ Speed of execution depends upon your PC’s resources and the complexity of the 
 How the compression works can perhaps most effectively be shown on the example of districts in the Russian Federation. This is on account of its very skewed composition = there are 85 districts of which the smallest (Sevastopol) is 616 sq.km. The largest (Sakha (Yakutia)) covers over 3 million sq.km., while 30 districts are over 100,000 km sq. km. in area, and these are all in the north or east.  In addition, Sevastopol + the Crimea (de facto but not de jure administered by Russia) and Kaliningrad are detached from mainland Russia. This is purely for illustrative purposes and in no way a political statement.
 
 <p align = "center">
-<img src="MD_images/Russia_oblasts_190km_no_compression.png" width="100%" align="center">
+<img src="MD_images/MD_images/Russia_oblasts_190km_basic_perpheral6.png" width="100%" align="center">
 </p>
 
 As we have already seen, a choropleth map of this geography will be dominated by the large Siberian areas, while the small areas will be all but invisible. However, much socio-economic data is likely to be concentrated in the smaller areas. A hexmap will equalise the visual impact of each district but, without compression, will leave large gaps due to the enormous distances involved.
 
 On the basic hexmap, each hexagon is rooted to the geometric centroid of its district. The geographical distribution is faithfully represented and the hexmap accurately overlays on a basemap. But in the case of Russian districts, the hex size that best achieves this (each hex being 190,000 km top to bottom [they’re pointy-uppy]) means that there’s an enormous amount of empty space, and this results in small hexagons whose labels are hard to read. It would also be hard to interpret any thematic data that was pinned to them (by colour). So, this is a geography for which a compressed hex map would make perfect sense.
 
-<p align = "center">
-<img src="MD_images/Russia_oblasts_190km_with_compression__1.png" width="100%" align="center">
-</p>
-
 We drop the basemap but, for the moment, retain the boundaries for reference. Six peripheral districts are labelled - these will have furthest to travel towards the centroid of centroids (CxC).  
 
 <p align = "center">
-<img src="MD_images/Russia_oblasts_190km_with_compression__6.png" width="100%" align="center">
+<img src="MD_images/Russia_oblasts_190km_185000_1___CF3.png" width="100%" align="center">
 </p>
 
 As the Compression Factor is adjusted (remember that CF=1,000 is practically no compression, while 1 is extreme compression), the gravitational attraction of the CxC varies. At CF = 3.0, the pattern remains recognisably that of the districts of the Russian Federation –  we still have the concentration of districts in western Russia, Kaliningrad Oblast is still separated, the Crimea and Caucasus are distinct, as is the scatter eastwards across the Urals into Asia. Yet now, we can zoom to the hexmap layer – so making the hexagons larger and their labelling clearer. 
 
 <p align = "center">
-<img src="MD_images/Russia_oblasts_190km_with_compression__7.png" width="100%" align="center">
+<img src="MD_images/Russia_oblasts_190km_185000_1___CF3___C_HXMP.png" width="100%" align="center">
 </p>
 
 ### Complex archipelagos
