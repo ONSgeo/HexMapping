@@ -24,7 +24,7 @@
 If so, then this is definitely for you. 
 
 Our Python tool creates equal area cartograms (EACs) based on hexagonal grids. Its principal purpose is to get around the visual dominance of large areas on maps, and the tendency for smaller areas to be overlooked. Please refer to 
-[the report](https://github.com/ONS-Geography-Research/HexMapping/blob/master/Report/Hexmapping_2019_06_24_0910.pdf) for details on the nature of the problem and setting up and running the tool on your data (64-bit Windows 7 or 10 supported).  
+[the report](https://github.com/ONS-Geography-Research/HexMapping/blob/master/Report/Hexmapping_Report__FINAL.pdf) for details on the nature of the problem and setting up and running the tool on your data (64-bit Windows 7 or 10 supported).  
 
 The tool has been successfully tested on a wide range of geographies with an extreme range of scales. 
 
