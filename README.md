@@ -10,7 +10,7 @@
 ### ... restructuring, additional code and annotations by Bruce Mitchell. 
 
 
-### ONS Geospatial, June 2019
+### ONS Geospatial, June 2019 (edited, November 2022)
 -------------------------------
 ###
 
@@ -51,7 +51,7 @@ One can scale the territories not according to their actual geographic area, but
 Cartograms exist in many forms; they may preserve, or ignore, shape, contiguity and orientation. They are often shown together with a conventional map to aid navigation and interpretation. They powerfully convey general impressions (see Benjamin Henning’s ‘WorldMapper’ https://worldmapper.org/), but are not intended to convey specific values, and it is next to impossible to assess whether two distorted areas - which are already differently-shaped in their raw forms -  represent the same statistical value. Furthermore, a new cartogram must be drawn for each new variable, refreshing the navigational challenge every time.
 
 ## The Equal Area Cartogram 
-
+0
 Our favoured approach is the equal area cartogram (EAC). Here, every district is represented with an identical geometric object of equal size and shape, and therefore, area. No area is inherently (dis)advantaged, as the base geometric representation of all is the same.  
 
 Once generated, the EAC provides a single standard layout that can be linked to countless datasets to generate as many thematic maps as desired. 
@@ -106,10 +106,6 @@ If every area is represented an equally-sized symbol, the visual impact of each 
 
 However, this will leave large gaps between the symbols due to the distances involved, so again, the large rural areas will dominate.
 
-<p align = "center">
-<img src="MD_images/placeholder.png" width = "100%" align = "center">
-</p>
-
 The optimal size for the symbols is where hex-clusters (representing urban concentrations) reflect the actual spatial distribution of the urban areas. Too small, and the hexes will be far apart even in the urban areas. Too large, and the urban hexes will jostle each other out of place.
 
 However, with geographies like Canada or Australia, the optimal hex size as defined above will produce an enormous amount of empty space. This results in small hexagons that are difficult to label and interpret.
@@ -126,7 +122,7 @@ You will now have a hexmap layer (ESR Shapefile) that you can use independently 
 
 ### Complex archipelagos
 
-The program also works with highly complex and regionally differentiated geographies such as Indonesia. 
+The program works well with highly complex and regionally differentiated geographies such as Indonesia. 
 
 Here, 270 Kabupaten or ‘regencies’ are distributed across a huge number of islands. There is considerable variation in size, generally being large on the islands of Borneo and New Guinea, but tiny on the densely inhabited island of Java. This is a classic example of the shortcomings of choropleth mapping. In terms of mapping socio-economic data at this administrative level, Java will always be disadvantaged. 
 
@@ -140,25 +136,37 @@ Producing a simple hexmap will leave large spaces, especially in the less-densel
 <img src="MD_images/Indonesia_kabupaten_bdys_and_hexmap_population.png" width="100%" align="center">
 </p>
 
-With a COMPRESSION FACTOR of CF=3 the large gaps are reduced while clearly retaining the overall pattern. One can then zoom into the map and label it far more effectively. 
+But a compressed hexmap., with a COMPRESSION FACTOR of CF=3, results in the large gaps being reduced while the overall pattern is clearly retained.  One can then zoom into the map and label it more effectively. 
 
 <p align = "center">
 <img src="MD_images/Indonesia_kabupaten_bdys_population_hexmap.png" width="100%" align="center">
 </p>
 
-Where clusters of spatial units could cause unreasonable distortions of the overall pattern, these can be extracted to inset maps alongside the general map. Unlike the earlier example, areas not selected for inset mapping are not disadvantaged. Furthermore, generating individual hexmaps for the inset areas results in a better approximation to their actual shape than can be achieved by creating a single overall hexmap. Both basic and compressed hexmap variants (with the inset areas extracted) can more accurately display the areas around the periphery of the inset areas (see around London).
+### Applications to the UK
+
+The West Midlands region encompasses some to of the most rural and some of the most urban parts of England, giving rise to a 700-fold size difference between smallest and largest of the 735 MSOAs in the region. It is therefore not practicable to produce an MSOA-level choropleth, graduated or proportional symbol, or basic hexmap of the entire region (scale 1:820,000). 
+
+<p align = "center">
+<img src="MD_images/West_Midlands_MSOAs_1.png" width="80%" align="center">
+</p>
+
+On the other hand, a compressed hexmap can succeed, as the compression permits a zoomed-in view, equating to a scale of 1:525,000.
+	
+<p align = "center">
+<img src="MD_images/West_Midlands_MSOAs_4_property_prices.png" width="80%" align="center">
+</p>
+
+### Inset hexmaps
+
+Where clusters of spatial units could cause unreasonable distortions of the overall pattern, these can be extracted to inset maps alongside the general map. Unlike the earlier example, areas not selected for inset mapping are not disadvantaged. 
+
+Furthermore, generating individual hexmaps for the inset areas results in a better approximation to their actual shape than can be achieved by creating a single overall hexmap. Both basic and compressed hexmap variants (with the inset areas extracted) can more accurately display the areas around the periphery of the inset areas (see around London).
 
 <p align = "center">
 <img src="MD_images/Local Authorities by area with insets.png" width="60%" align="center">
 </p>
 
-The West Midlands region encompasses some to of the most rural and some of the most urban parts of England, giving rise to a 700-fold size difference between smallest and largest of the 735 MSOAs in the region. It is therefore not practicable to produce an MSOA-level choropleth, graduated or proportional symbol, or basic hexmap of the entire region (scale 1:820,000). On the other hand, a compressed hexmap can succeed, as the compression permits a zoomed-in view, equating to a scale of 1:525,000.
 
-<p align = "center">
-<img src="MD_images/West_Midlands_MSOAs_1.png" width="80%" align="center">
-	
-<img src="MD_images/West_Midlands_MSOAs_4_property_prices.png" width="80%" align="center">
-</p>
 
 ### Regional and multiple compression
 
