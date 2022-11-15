@@ -98,7 +98,31 @@ Speed of execution depends upon your PC’s resources and the complexity of the 
 
 ### The Compression Algorithm
 
-<i>Section undergoing edits</i>
+The compression algorithm works most effectively on heterogeneous geographies, comprising urban concentrations together with large sparsely-populated expanses, such as Canada and Australia.
+
+As we have already seen, a national-level choropleth map of such a geography will be dominated by large, relatively empty, areas, while urban areas, which tend to be relatively small, may be all but invisible. Yet socio-economic data is likely to be concentrated in the smaller areas.
+
+If every area is represented an equally-sized symbol, the visual impact of each district will be equalised. On a basic hexmap, each hexagon is rooted to the geometric centroid of its district: so, the hexmap can accurately overlay on a basemap and the geographical distribution is faithfully represented.
+
+However, this will leave large gaps between the symbols due to the distances involved, so again, the large rural areas will dominate.
+
+<p align = "center">
+<img src="MD_images/placeholder.png" width = "100%" align = "center">
+</p>
+
+The optimal size for the symbols is where hex-clusters (representing urban concentrations) reflect the actual spatial distribution of the urban areas. Too small, and the hexes will be far apart even in the urban areas. Too large, and the urban hexes will jostle each other out of place.
+
+However, with geographies like Canada or Australia, the optimal hex size as defined above will produce an enormous amount of empty space. This results in small hexagons that are difficult to label and interpret.
+
+In such cases the compressed hexmap comes into its own. This is built on the optimal hex size that we have determined above.
+
+We calculate the centroid of centroids (CxC) – the geographical mid-point of the centroids of all the areas. All centroids are then shifted towards the CxC on the basis of the Compression Factor (CF). described above. The CF is analogous to gravitational attraction, and various models were pursued to explore shades of positive and inverse gravity fields.
+
+As the Compression Factor is adjusted (remember that CF=1,000 is practically no compression, while 1 is extreme compression), the gravitational attraction of the CxC varies. Centroids for peripheral areas will have the furthest to travel towards the CxC.
+
+The user will determine that, at a certain CF value, the pattern of hexes remains recognisably that of the districts they began with. Look out for – and seek to emulate – particular patterns and concentration in the original boundary set.
+
+You will now have a hexmap layer (ESR Shapefile) that you can use independently of a basemap and to which you can join ant desired attribute data. Zoom to layer and the hexagons will be distinctly larger and their labelling clearer than would have been possible with a basic hexmap.
 
 ### Complex archipelagos
 
