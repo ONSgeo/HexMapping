@@ -112,7 +112,7 @@ However, with geographies like Canada or Australia, the optimal hex size as defi
 
 In such cases the compressed hexmap comes into its own. This is built on the optimal hex size that we have determined above.
 
-We calculate the centroid of centroids (CxC) – the geographical mid-point of the centroids of all the areas. All centroids are then shifted towards the CxC on the basis of the Compression Factor (CF). described above. The CF is analogous to gravitational attraction, and various models were pursued to explore shades of positive and inverse gravity fields.
+We calculate the centroid of centroids (CxC) – the geographical mid-point of the centroids of all the areas. All centroids are then shifted towards the CxC on the basis of the Compression Factor (CF). described above. The CF is analogous to gravitational attraction, and various models were pursued to explore shades of positive and inverse gravity fields. The effects are illustrated in the three “Impact of increasing COMPRESSION_FACTOR on central and peripheral hexes” documents.
 
 As the Compression Factor is adjusted (remember that CF=1,000 is practically no compression, while 1 is extreme compression), the gravitational attraction of the CxC varies. Centroids for peripheral areas will have the furthest to travel towards the CxC.
 
