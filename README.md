@@ -34,8 +34,6 @@ Thematic mapping draws attention to statistical difference across space. Statist
 
 The eye is drawn to large areas, so when seen together on a map, the larger units dominate and the smaller recede. Think of Canada, Australia and Russia, where huge areas, often relatively sparse in socio-economic statistics, acquire visual dominance at the expense of the smaller and often more populated areas. Those familiar with the geostatistics behind any given map may be able to apply a mental filter to compensate, but the fact remains that the areas where the chief interest of your story resides may be small and hard to see. 
 
-<img src="MD_images/Districts of Russia.png" width="100%" align="center">
-
 Here in the UK it is a similar story. Local Authority Districts (LADs) in the UK range in size from the 290 hectares of the City of London to the 2.6 million hectares of the Highlands of Scotland – but the two are administratively equivalent. On a national map, the City of London is completely invisible.  British statistical geographies (Census output areas) are just as vulnerable to the issue as the administrative geographies.  They are based on population thresholds, so are made up of units (instances) which are small where the population is dense, and large where it is spread thinly.  At the middle level [MSOA (EW), DataZones (Sc) and Small Areas (NI)], they range from just over 1 hectare (ha) to 180,000 ha.
 
 <p align = "center">
@@ -100,31 +98,7 @@ Speed of execution depends upon your PC’s resources and the complexity of the 
 
 ### The Compression Algorithm
 
-How the compression works can perhaps most effectively be shown on the example of districts in the Russian Federation. This is on account of its very skewed composition = there are 85 districts of which the smallest (Sevastopol) is 616 sq.km. The largest (Sakha (Yakutia)) covers over 3 million sq.km., while 30 districts are over 100,000 km sq. km. in area, and these are all in the north or east.  In addition, Sevastopol + the Crimea (de facto but not de jure administered by Russia) and Kaliningrad are detached from mainland Russia. This is purely for illustrative purposes and in no way a political statement.
-
-<p align = "center">
-<img src="MD_images/Russia_oblasts_190km_basic.png" width="100%" align="center">
-</p>
-
-As we have already seen, a choropleth map of this geography will be dominated by the large Siberian areas, while the small areas will be all but invisible. However, much socio-economic data is likely to be concentrated in the smaller areas. A hexmap will equalise the visual impact of each district but, without compression, will leave large gaps due to the enormous distances involved.
-
-On the basic hexmap, each hexagon is rooted to the geometric centroid of its district. The geographical distribution is faithfully represented and the hexmap accurately overlays on a basemap. But in the case of Russian districts, the hex size that best achieves this (each hex being 190,000 km top to bottom [they’re pointy-uppy]) means that there’s an enormous amount of empty space, and this results in small hexagons whose labels are hard to read. It would also be hard to interpret any thematic data that was pinned to them (by colour). So, this is a geography for which a compressed hex map would make perfect sense.
-
-<p align = "center">
-<img src="MD_images/Russia_oblasts_190km_basic_perpheral6.png" width="100%" align="center">
-</p>
-
-We drop the basemap but, for the moment, retain the boundaries for reference. Six peripheral districts are labelled - these will have furthest to travel towards the centroid of centroids (CxC).  
-
-<p align = "center">
-<img src="MD_images/Russia_oblasts_190km_185000_1___CF3.png" width="100%" align="center">
-</p>
-
-As the Compression Factor is adjusted (remember that CF=1,000 is practically no compression, while 1 is extreme compression), the gravitational attraction of the CxC varies. At CF = 3.0, the pattern remains recognisably that of the districts of the Russian Federation –  we still have the concentration of districts in western Russia, Kaliningrad Oblast is still separated, the Crimea and Caucasus are distinct, as is the scatter eastwards across the Urals into Asia. Yet now, we can zoom to the hexmap layer – so making the hexagons larger and their labelling clearer. 
-
-<p align = "center">
-<img src="MD_images/Russia_oblasts_190km_185000_1___CF3___C_HXMP.png" width="100%" align="center">
-</p>
+<i>Section undergoing edits</i>
 
 ### Complex archipelagos
 
