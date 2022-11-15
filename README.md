@@ -118,7 +118,7 @@ As the Compression Factor is adjusted (remember that CF=1,000 is practically no 
 
 The user will determine that, at a certain CF value, the pattern of hexes remains recognisably that of the districts they began with. Look out for – and seek to emulate – particular patterns and concentration in the original boundary set.
 
-You will now have a hexmap layer (ESR Shapefile) that you can use independently of a basemap and to which you can join ant desired attribute data. Zoom to layer and the hexagons will be distinctly larger and their labelling clearer than would have been possible with a basic hexmap.
+You will now have a hexmap layer (ESR Shapefile) that you can use independently of a basemap and to which you can join any desired attribute data. Zoom to layer and the hexagons will be distinctly larger and their labelling clearer than would have been possible with a basic hexmap.
 
 ### Complex archipelagos
 
