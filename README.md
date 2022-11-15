@@ -164,11 +164,11 @@ Furthermore, generating individual hexmaps for the inset areas results in a bett
 
 <p align = "center">
 <img src="MD_images/Local Authorities by area with insets.png" width="60%" align="center">
+
+<img src="MD_images/Estimated_Deaths_of_Homeless_People__2019_HexMap_v14__basic.png" width="60%" align="center">
+
+<img src="MD_images/Estimated_Deaths_of_Homeless_People__2019_HexMap_v14__compressed.png" width="60%" align="center">
 </p>
-<img src="MD_images/Estimated_Deaths_of_Homeless_People__2019_HexMap_v14__basic.png  width="60%" align="center">
-
-<img src="MD_images/Estimated_Deaths_of_Homeless_People__2019_HexMap_v14__compressed.png
-
 
 ### Regional and multiple compression
 
