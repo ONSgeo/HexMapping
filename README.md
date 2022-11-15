@@ -207,7 +207,7 @@ Zooming right in, we have generated a (proof-of-concept) compressed hexmap from 
 Looking further afield, the technique may also be used at the cosmic scale. The HYG Database is a meta-catalogue containing over 120,000 stars. It includes the x,y,z, Cartesian coordinates of the star (in a system based on the equatorial coordinates as seen from Earth), distance from earth and a range of other fields. Once a suitable buffer is generated for each point to create polygons, a compressed hexmap may easily be generated for any subset of the catalogue. We have generated a compressed hexmap of all the stars within ten parsecs of Sol (our sun).    
 
 <p align = "center">
-<img src="MD_images/The HYG database of stars.png" width=80%" align="center">
+<img src="MD_images/The_HYG_database_of_stars.png" width=80%" align="center">
 </p>
 									    
 ## SUMMARY
